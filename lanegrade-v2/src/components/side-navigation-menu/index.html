@@ -1,0 +1,117 @@
+<div
+    class="overflow-y flex flex-col flex-grow h-screen p-4 mx-auto shadow-lg"
+    if.bind="firebaseUser"
+>
+    <nav class="md:p-4 md:items-start md:w-64 flex flex-col items-center w-8 h-full transition-all">
+
+        <div class="md:p-4 flex justify-center w-full mb-8 rounded shadow-md">
+            <h1 class="text-2xl text-gray-500">
+                <span class="md:inline-block hidden">LaneGrade</span>
+                <img
+                    src="android-chrome-192x192.png"
+                    class="md:hidden inline-block w-8 h-8 shadow-lg"
+                />
+            </h1>
+        </div>
+
+        <div class="w-full">
+
+            <div class="md:block hidden w-full mt-6 mb-2">
+                <h1 class="md:block text-violet-700 hidden text-sm tracking-wide uppercase select-none">
+                    Overview
+                </h1>
+            </div>
+
+            <a
+                load="dashboard"
+                class="md:justify-start hover:text-violet-400 flex items-center justify-center w-full px-2 py-2 my-1 tracking-wide text-gray-500 transition duration-500 ease-in-out"
+            >
+                <div>
+                    <i class="fad fa-tachometer md:mx-4"></i>
+                </div>
+                <div class="md:inline-block hidden ml-4">
+                    Dashboard
+                </div>
+            </a>
+
+            <a
+                load="organization"
+                class="md:justify-start hover:text-violet-400 flex items-center justify-center w-full px-2 py-2 my-1 tracking-wide text-gray-500 transition duration-500 ease-in-out"
+            >
+                <div>
+                    <i class="fad fa-users md:mx-4"></i>
+                </div>
+                <div class="md:inline-block hidden ml-4">
+                    Organization
+                </div>
+            </a>
+
+            <div class="md:block hidden w-full mt-6 mb-2">
+                <h1 class="md:block text-violet-700 hidden text-sm tracking-wide uppercase select-none">
+                    Review
+                </h1>
+            </div>
+
+            <a
+                load="tasks"
+                class="md:justify-start hover:text-violet-400 flex items-center justify-center w-full px-2 py-2 my-1 tracking-wide text-gray-500 transition duration-500 ease-in-out"
+            >
+                <div>
+                    <i class="fad fa-list md:mx-4"></i>
+                </div>
+                <div class="md:inline-block hidden ml-4">
+                    Tasks
+                </div>
+            </a>
+        </div>
+
+        <div class="md:block hidden w-full mt-6 mb-2">
+            <h1 class="md:block text-violet-700 hidden text-sm tracking-wide uppercase select-none">
+                User Management
+            </h1>
+        </div>
+
+        <a
+            load="account"
+            class="md:justify-start hover:text-violet-400 flex items-center justify-center w-full px-2 py-2 my-1 tracking-wide text-gray-500 transition duration-500 ease-in-out"
+        >
+            <div>
+                <i class="fad fa-user md:mx-4"></i>
+            </div>
+            <div class="md:inline-block hidden ml-4">
+                My Account
+            </div>
+        </a>
+    </nav>
+
+    <nav class="md:items-start md:w-64 flex flex-col items-center w-8 transition-all">
+        <a
+            class="hover:text-red-400 hover:rounded flex items-center w-full p-2 transition duration-500 ease-in-out cursor-pointer"
+            click.delegate="logOut()"
+        >
+            <div>
+                <i class="fad fa-sign-out"></i>
+            </div>
+            <div class="md:inline-block hidden ml-4">
+                Sign Out
+            </div>
+        </a>
+    </nav>
+
+    <nav
+        class="md:items-start md:w-64 flex flex-col items-center w-8 transition-all"
+        if.bind="!firebaseUser"
+    >
+        <a
+            class="hover:text-green-400 hover:rounded flex items-center w-full p-2 transition duration-500 ease-in-out"
+            href="login"
+        >
+            <div>
+                <i class="fad fa-sign-in-alt"></i>
+            </div>
+            <div class="md:inline-block hidden ml-4">
+                Login
+            </div>
+        </a>
+    </nav>
+</div>

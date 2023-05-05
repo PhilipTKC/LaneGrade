@@ -1,0 +1,46 @@
+<aside class="h-full">
+    <div class="flex flex-col w-full h-full p-4 overflow-y-auto">
+        <div class="flex flex-col flex-grow">
+            <div
+                class="flex items-center justify-center w-48 h-full"
+                if.bind="isLoading && !frames"
+            >
+                <div>
+                    <p class="text-gray-200">Select Lane</p>
+                </div>
+            </div>
+            <div
+                class="flex items-center justify-center w-48 h-full"
+                if.bind="isLoading && frames"
+            >
+                <div>
+                    <i class="fad fa-circle-notch fa-spin"></i>
+                </div>
+            </div>
+
+            <div
+                class="p-2 cursor-pointer"
+                click.trigger="setActive($index)"
+                ref="framesElement"
+                id="frame-${$index}"
+                repeat.for="frame of frames"
+                show.bind="!isLoading"
+                style="height: 56px"
+            >
+                <div
+                    class="flex w-full px-4 py-2 rounded select-none ${activeIndex === $index ? 'bg-gray-300' : 'bg-white'}">
+                    <span class="inline-block w-32 mr-2"> ${frame.frameId} </span>
+                    <span if.bind="frame.accepted === true">
+                        <i class="fad fa-check inline-block text-green-400"></i>
+                    </span>
+                    <span if.bind="frame.accepted === false">
+                        <i class="fad fa-times inline-block text-red-400"></i>
+                    </span>
+                    <span if.bind="frame.accepted === undefined || frame.accepted === null && frame.reviewed">
+                        <i class="fad fa-question-circle inline-block"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

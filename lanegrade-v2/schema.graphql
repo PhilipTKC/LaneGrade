@@ -1,0 +1,3495 @@
+schema {
+  query: Root
+}
+
+type ActionOfficer {
+  assignedTo: String
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  code: String
+  correspondsToLoginName: String
+  correspondsToUser(filter: UserFilter): User
+  costPerHour: Decimal
+  currentLocationKey: Decimal
+  defects(filter: DefectFilter): [Defect]
+  deviceDataKey(filter: DataSecurityKeyFilter): DataSecurityKey
+  deviceDataKeyKey: Decimal
+  deviceJobOfficer: String
+  enquiriesDataKeyKey: Decimal
+  enquiryStatusLogs(filter: EnquiryStatusLogFilter): [EnquiryStatusLog]
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  externalReference: String
+  inactive: String
+  inspectingOfficerCode: String
+  inspectionBatches(filter: InspectionBatchFilter): [InspectionBatch]
+  inspectionFeatures(filter: InspectionFeatureFilter): [InspectionFeature]
+  jobStatusLogs(filter: JobStatusLogFilter): [JobStatusLog]
+  key: ID
+  labourTypeCode: String
+  name: String
+  numberOfInspections: Decimal
+  organisationCode: String
+  priorityCode: String
+  responsibleOfficerEnquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  routeCode: String
+  taskRedirectOfficerCode: String
+  telephoneNumber: String
+  workGroupCode: String
+}
+
+input ActionOfficerFilter {
+  code: StringFilter
+  name: StringFilter
+  telephoneNumber: StringFilter
+  correspondsToLoginName: StringFilter
+  workGroupCode: StringFilter
+  numberOfInspections: DecimalFilter
+  routeCode: StringFilter
+  inactive: StringFilter
+  organisationCode: StringFilter
+  inspectingOfficerCode: StringFilter
+  priorityCode: StringFilter
+  enquiriesDataKeyKey: DecimalFilter
+  deviceDataKeyKey: DecimalFilter
+  deviceJobOfficer: StringFilter
+  currentLocationKey: DecimalFilter
+  labourTypeCode: StringFilter
+  externalReference: StringFilter
+  assignedTo: StringFilter
+  taskRedirectOfficerCode: StringFilter
+  costPerHour: DecimalFilter
+}
+
+type ActivityClass {
+  code: String
+  description: String
+  key: ID
+}
+
+input ActivityClassFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type AgreementType {
+  code: String
+  dead: Boolean
+  externalReference: String
+  key: ID
+  name: String
+  notes: String
+}
+
+input AgreementTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  notes: StringFilter
+  dead: StringFilter
+}
+
+type Area {
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  code: String
+  description: String
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+}
+
+input AreaFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type AssetControl {
+  code: String
+  features(filter: FeatureFilter): [Feature]
+  includeInValuationBatchProcessing: Boolean
+  key: ID
+  name: String
+}
+
+input AssetControlFilter {
+  code: StringFilter
+  name: StringFilter
+  includeInValuationBatchProcessing: StringFilter
+}
+
+type AssetFunction {
+  code: String
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  name: String
+}
+
+input AssetFunctionFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type AssetGroup {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+}
+
+input AssetGroupFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+}
+
+type AttributeType {
+  attributeValues(filter: AttributeValueFilter): [AttributeValue]
+  case: String
+  code: String
+  dataType: String
+  decimalPlaces: Decimal
+  dependsOnAttributeTypeCode: String
+  description: String
+  deviceDataKeyKey: Decimal
+  displayOrder: Decimal
+  featureAttributes(filter: FeatureAttributeFilter): [FeatureAttribute]
+  isProportional: String
+  key: ID
+  maximumWidth: Decimal
+  name: String
+  notApplicableValueCode: String
+  unitOfMeasure(filter: UnitOfMeasureFilter): UnitOfMeasure
+  unitOfMeasureCode: String
+}
+
+input AttributeTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  displayOrder: DecimalFilter
+  notApplicableValueCode: StringFilter
+  dataType: StringFilter
+  isProportional: StringFilter
+  unitOfMeasureCode: StringFilter
+  decimalPlaces: DecimalFilter
+  maximumWidth: DecimalFilter
+  case: StringFilter
+  dependsOnAttributeTypeCode: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  description: StringFilter
+}
+
+type AttributeValue {
+  attributeType(filter: AttributeTypeFilter): AttributeType
+  attributeTypeCode: String
+  code: String
+  colour: Decimal
+  dead: String
+  displayOrder: Decimal
+  externalReference: String
+  featAttribTypes(filter: FeatureAttributeFilter): [FeatureAttribute]
+  featureStatus: String
+  key: ID
+  maximum: Decimal
+  minimum: Decimal
+  name: String
+  nominal: Decimal
+  remainingLifeFactor: Decimal
+  replacementValueFactor: Decimal
+  replacementValueSupplement: Decimal
+  residualValueFactor: Decimal
+  residualValueSupplement: Decimal
+  riskWarningText: String
+  showRiskWarning: String
+  showWarning: String
+}
+
+input AttributeValueFilter {
+  attributeTypeCode: StringFilter
+  code: StringFilter
+  name: StringFilter
+  replacementValueFactor: DecimalFilter
+  replacementValueSupplement: DecimalFilter
+  residualValueFactor: DecimalFilter
+  residualValueSupplement: DecimalFilter
+  remainingLifeFactor: DecimalFilter
+  displayOrder: DecimalFilter
+  minimum: DecimalFilter
+  maximum: DecimalFilter
+  nominal: DecimalFilter
+  dead: StringFilter
+  showWarning: StringFilter
+  featureStatus: StringFilter
+  colour: DecimalFilter
+  showRiskWarning: StringFilter
+  riskWarningText: StringFilter
+  externalReference: StringFilter
+}
+
+type Category {
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  code: String
+  description: String
+  key: ID
+}
+
+input CategoryFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type CentralDocumentLink {
+  documentDate: DateTime
+  documentName: String
+  documentNotes: String
+  documentNumber: Decimal
+  key: ID
+  modifiedBy(filter: UserFilter): User
+  modifiedByLoginName: String
+  modifiedDate: DateTime
+  url: DocumentUrl
+}
+
+input CentralDocumentLinkFilter {
+  documentNumber: DecimalFilter
+  documentNotes: StringFilter
+  documentName: StringFilter
+  documentDate: DateTimeFilter
+  modifiedByLoginName: StringFilter
+  modifiedDate: DateTimeFilter
+}
+
+type CentralEnquiry {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  address: String
+  addressReference: String
+  alternateTelephoneNumber: String
+  centralSite(filter: CentralSiteFilter): CentralSite
+  classificationCode: String
+  commitLogNumber: Decimal
+  contactName: String
+  description: String
+  documents(filter: CentralDocumentLinkFilter): [CentralDocumentLink]
+  easting: Decimal
+  emailAddress: String
+  enquiryClassification(filter: EnquiryClassificationFilter): EnquiryClassification
+  enquiryCustomerLinks(filter: EnquiryCustomerLinkFilter): [EnquiryCustomerLink]
+  enquiryDuration: Decimal
+  enquiryLink(filter: EnquiryLinkFilter): EnquiryLink
+  enquiryNumber: Decimal
+  enquiryReference: String
+  enquiryStatus(filter: EnquiryStatusFilter): EnquiryStatus
+  enquirySubject(filter: EnquirySubjectFilter): EnquirySubject
+  externalSystem(filter: ExternalSystemFilter): ExternalSystem
+  externalSystemNumber: Decimal
+  externalSystemReference: String
+  fax: String
+  followUpCode: String
+  followUpDate: DateTime
+  key: ID
+  loggedByLoginName: String
+  loggedByUser(filter: UserFilter): User
+  loggedDate: DateTime
+  logNumber: Decimal
+  northing: Decimal
+  notes: String
+  officerCode: String
+  outstanding: String
+  printedFlag: String
+  revisionNumber: Decimal
+  serviceCode: String
+  siteCode: String
+  statusCode: String
+  statusEffectiveDate: DateTime
+  statusLoggedDate: DateTime
+  statusLogs(filter: EnquiryStatusLogFilter): [EnquiryStatusLog]
+  subjectCode: String
+  telephoneNumber: String
+  transactionId: String
+  urgent: String
+}
+
+input CentralEnquiryFilter {
+  enquiryNumber: DecimalFilter
+  description: StringFilter
+  loggedDate: DateTimeFilter
+  contactName: StringFilter
+  address: StringFilter
+  serviceCode: StringFilter
+  subjectCode: StringFilter
+  classificationCode: StringFilter
+  siteCode: StringFilter
+  logNumber: DecimalFilter
+  printedFlag: StringFilter
+  telephoneNumber: StringFilter
+  addressReference: StringFilter
+  alternateTelephoneNumber: StringFilter
+  fax: StringFilter
+  emailAddress: StringFilter
+  statusLoggedDate: DateTimeFilter
+  loggedByLoginName: StringFilter
+  officerCode: StringFilter
+  statusCode: StringFilter
+  followUpDate: DateTimeFilter
+  notes: StringFilter
+  followUpCode: StringFilter
+  statusEffectiveDate: DateTimeFilter
+  outstanding: StringFilter
+  commitLogNumber: DecimalFilter
+  externalSystemNumber: DecimalFilter
+  externalSystemReference: StringFilter
+  enquiryReference: StringFilter
+  easting: DecimalFilter
+  northing: DecimalFilter
+  urgent: StringFilter
+  transactionId: StringFilter
+  enquiryDuration: DecimalFilter
+  revisionNumber: DecimalFilter
+}
+
+type CentralSite {
+  address: String
+  aliasLocality(filter: LocalityFilter): Locality
+  aliasLocalityId: Decimal
+  aliasName: String
+  area(filter: AreaFilter): Area
+  areaCode: String
+  categoryCode: String
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  centroidAltitude: Decimal
+  centroidEasting: Decimal
+  centroidNorthing: Decimal
+  code: String
+  dead: String
+  documents(filter: CentralDocumentLinkFilter): [CentralDocumentLink]
+  endDate: DateTime
+  extentOneAltitude: Decimal
+  extentOneEasting: Decimal
+  extentOneNorthing: Decimal
+  extentTwoAltitude: Decimal
+  extentTwoEasting: Decimal
+  extentTwoNorthing: Decimal
+  externalReference: String
+  key: ID
+  locality(filter: LocalityFilter): Locality
+  localityId: Decimal
+  modifiedBy: String
+  modifiedDate: DateTime
+  name: String
+  namingAuthorityOrganisationCode: String
+  notes: String
+  publishedDate: DateTime
+  site(filter: SiteFilter): Site
+  siteCategory(filter: CategoryFilter): Category
+  startDate: DateTime
+  state(filter: StateFilter): State
+  stateCode: String
+  stateDate: DateTime
+  streetRecordType(filter: StreetRecordTypeFilter): StreetRecordType
+  streetRecordTypeCode: Decimal
+  surface(filter: SurfaceFilter): Surface
+  surfaceCode: String
+  tolerance: Decimal
+  usageCount: Decimal
+  versionNumber: Decimal
+  ward(filter: WardFilter): Ward
+  wardCode: String
+}
+
+input CentralSiteFilter {
+  code: StringFilter
+  name: StringFilter
+  areaCode: StringFilter
+  wardCode: StringFilter
+  categoryCode: StringFilter
+  usageCount: DecimalFilter
+  address: StringFilter
+  extentOneEasting: DecimalFilter
+  extentOneNorthing: DecimalFilter
+  extentOneAltitude: DecimalFilter
+  extentTwoEasting: DecimalFilter
+  extentTwoNorthing: DecimalFilter
+  extentTwoAltitude: DecimalFilter
+  centroidEasting: DecimalFilter
+  centroidNorthing: DecimalFilter
+  centroidAltitude: DecimalFilter
+  externalReference: StringFilter
+  localityId: DecimalFilter
+  tolerance: DecimalFilter
+  versionNumber: DecimalFilter
+  startDate: DateTimeFilter
+  endDate: DateTimeFilter
+  notes: StringFilter
+  streetRecordTypeCode: DecimalFilter
+  namingAuthorityOrganisationCode: StringFilter
+  dead: StringFilter
+  modifiedBy: StringFilter
+  modifiedDate: DateTimeFilter
+  publishedDate: DateTimeFilter
+  aliasLocalityId: DecimalFilter
+  aliasName: StringFilter
+  stateCode: StringFilter
+  stateDate: DateTimeFilter
+  surfaceCode: StringFilter
+}
+
+type Classification {
+  code: String
+  dataKey: Decimal
+  externalReference: String
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  name: String
+  sites(filter: SiteFilter): [Site]
+}
+
+input ClassificationFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  dataKey: DecimalFilter
+}
+
+type ConstructionMethod {
+  code: String
+  dead: Boolean
+  externalReference: String
+  key: ID
+  name: String
+  notes: String
+}
+
+input ConstructionMethodFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  notes: StringFilter
+  dead: StringFilter
+}
+
+type Contact {
+  alternatePhone: String
+  appendSite: String
+  contactNumber: Decimal
+  contactReference: String
+  contractorContacts(filter: ContractorContactFilter): [ContractorContact]
+  contractors(filter: ContractorFilter): [Contractor]
+  countyName: String
+  customerType(filter: CustomerTypeFilter): CustomerType
+  customerTypeCode: String
+  email: String
+  fax: String
+  forename: String
+  key: ID
+  localityName: String
+  phone: String
+  postCode: String
+  propertyAddress: String
+  propertyReference: String
+  streetName: String
+  subAddress: String
+  surname: String
+  title: String
+  townName: String
+}
+
+input ContactFilter {
+  contactNumber: DecimalFilter
+  surname: StringFilter
+  phone: StringFilter
+  alternatePhone: StringFilter
+  fax: StringFilter
+  contactReference: StringFilter
+  propertyReference: StringFilter
+  customerTypeCode: StringFilter
+  propertyAddress: StringFilter
+  streetName: StringFilter
+  localityName: StringFilter
+  townName: StringFilter
+  countyName: StringFilter
+  postCode: StringFilter
+  email: StringFilter
+  appendSite: StringFilter
+  title: StringFilter
+  forename: StringFilter
+  subAddress: StringFilter
+}
+
+type Contract {
+  code: String
+  completedOnTimeCheck: String
+  contractExportBatch: Decimal
+  contractor(filter: ContractorFilter): Contractor
+  contractorCode: String
+  creditorCostCodeCode: String
+  dead: String
+  defaultJobCostPaymentUpliftPercentage: Decimal
+  defaultPaymentRequestClassification(filter: PaymentRequestClassificationFilter): PaymentRequestClassification
+  defaultPaymentRequestClassificationCode: String
+  deviceDataKeyKey: Decimal
+  deviceJobUpdateWill: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  estimatedValue: Decimal
+  exportDirectory: String
+  financialInterfaceCommitAuthorisation: String
+  finishDate: DateTime
+  groupJobsOntoOrdersBy: String
+  importDirectory: String
+  interfaceType: String
+  invoicing: String
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  name: String
+  nonTerm: String
+  notes: String
+  orderHeaders(filter: OrderHeaderFilter): [OrderHeader]
+  partialPaymentLevel: String
+  paymentJobExcessPercentage: Decimal
+  paymentJobExcessPercentageCheck: String
+  paymentJobExcessValue: Decimal
+  paymentJobExcessValueCheck: String
+  paymentJobShortfallPercentage: Decimal
+  paymentJobShortfallPercentageCheck: String
+  paymentJobShortfallValue: Decimal
+  paymentJobShortfallValueCheck: String
+  paymentRequestJobExcessPercentage: Decimal
+  paymentRequestJobExcessPercentageCheck: String
+  paymentRequestJobExcessValue: Decimal
+  paymentRequestJobExcessValueCheck: String
+  paymentRequestJobShortfallPercentage: Decimal
+  paymentRequestJobShortfallPercentageCheck: String
+  paymentRequestJobShortfallValue: Decimal
+  paymentRequestJobShortfallValueCheck: String
+  paymentRequestOverallExcessPercentage: Decimal
+  paymentRequestOverallExcessPercentageCheck: String
+  paymentRequestOverallExcessValue: Decimal
+  paymentRequestOverallExcessValueCheck: String
+  paymentRequestOverallShortfallPercentage: Decimal
+  paymentRequestOverallShortfallPercentageCheck: String
+  paymentRequestOverallShortfallValue: Decimal
+  paymentRequestOverallShortfallValueCheck: String
+  preventCommitIfNoJobEndDates: String
+  preventNonRoutineWorksArchiving: String
+  priceFactorChangeCheck: String
+  retentionLevel: String
+  separatePaymentCertificate: String
+  siteBilling: String
+  sorBanding: String
+  specifyRegimes: String
+  startDate: DateTime
+  workCategory(filter: WorkCategoryFilter): WorkCategory
+  workCategoryCode: String
+  worksInspected: String
+}
+
+type ContractArea {
+  code: String
+  dataKeyKey: Decimal
+  dataSecurityKey(filter: DataSecurityKeyFilter): DataSecurityKey
+  featureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+  features(filter: FeatureFilter): [Feature]
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  name: String
+  orderHeaders(filter: OrderHeaderFilter): [OrderHeader]
+  sites(filter: SiteFilter): [Site]
+}
+
+input ContractAreaFilter {
+  code: StringFilter
+  name: StringFilter
+  dataKeyKey: DecimalFilter
+}
+
+input ContractFilter {
+  code: StringFilter
+  name: StringFilter
+  notes: StringFilter
+  contractorCode: StringFilter
+  startDate: DateTimeFilter
+  finishDate: DateTimeFilter
+  siteBilling: StringFilter
+  paymentRequestOverallExcessValue: DecimalFilter
+  paymentRequestOverallShortfallValue: DecimalFilter
+  paymentRequestJobExcessValue: DecimalFilter
+  paymentRequestJobShortfallValue: DecimalFilter
+  paymentJobExcessValue: DecimalFilter
+  paymentJobShortfallValue: DecimalFilter
+  paymentRequestOverallExcessPercentage: DecimalFilter
+  paymentRequestOverallShortfallPercentage: DecimalFilter
+  paymentRequestJobExcessPercentage: DecimalFilter
+  paymentRequestJobShortfallPercentage: DecimalFilter
+  paymentJobExcessPercentage: DecimalFilter
+  paymentJobShortfallPercentage: DecimalFilter
+  paymentRequestOverallExcessValueCheck: StringFilter
+  paymentRequestOverallShortfallValueCheck: StringFilter
+  paymentRequestJobExcessValueCheck: StringFilter
+  paymentRequestJobShortfallValueCheck: StringFilter
+  paymentJobExcessValueCheck: StringFilter
+  paymentJobShortfallValueCheck: StringFilter
+  paymentRequestOverallExcessPercentageCheck: StringFilter
+  paymentRequestOverallShortfallPercentageCheck: StringFilter
+  paymentRequestJobExcessPercentageCheck: StringFilter
+  paymentRequestJobShortfallPercentageCheck: StringFilter
+  paymentJobExcessPercentageCheck: StringFilter
+  paymentJobShortfallPercentageCheck: StringFilter
+  creditorCostCodeCode: StringFilter
+  worksInspected: StringFilter
+  priceFactorChangeCheck: StringFilter
+  completedOnTimeCheck: StringFilter
+  retentionLevel: StringFilter
+  dead: StringFilter
+  importDirectory: StringFilter
+  exportDirectory: StringFilter
+  contractExportBatch: DecimalFilter
+  interfaceType: StringFilter
+  nonTerm: StringFilter
+  separatePaymentCertificate: StringFilter
+  invoicing: StringFilter
+  workCategoryCode: StringFilter
+  estimatedValue: DecimalFilter
+  specifyRegimes: StringFilter
+  sorBanding: StringFilter
+  groupJobsOntoOrdersBy: StringFilter
+  preventNonRoutineWorksArchiving: StringFilter
+  financialInterfaceCommitAuthorisation: StringFilter
+  partialPaymentLevel: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  defaultPaymentRequestClassificationCode: StringFilter
+  preventCommitIfNoJobEndDates: StringFilter
+  defaultJobCostPaymentUpliftPercentage: DecimalFilter
+  deviceJobUpdateWill: StringFilter
+}
+
+type Contractor {
+  code: String
+  contact(filter: ContactFilter): Contact
+  contactNumber: Decimal
+  contacts(filter: ContractorContactFilter): [ContractorContact]
+  contracts(filter: ContractFilter): [Contract]
+  defaultGangCode: String
+  disqualified: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  exportDirectory: String
+  importDirectory: String
+  interfaceType: String
+  key: ID
+  name: String
+  notes: String
+  orderHeaders(filter: OrderHeaderFilter): [OrderHeader]
+  parentCompanyCode: String
+  paymentRequestImportLevel: String
+  taxStatusCode: String
+  tenderAwardValue: Decimal
+  tenderBiddingValue: Decimal
+  vendorDivision: String
+  vendorId: String
+  workValueLimit: Decimal
+}
+
+type ContractorContact {
+  contact(filter: ContactFilter): Contact
+  contactNumber: Decimal
+  contractor(filter: ContractorFilter): Contractor
+  contractorCode: String
+  key: ID
+}
+
+input ContractorContactFilter {
+  contractorCode: StringFilter
+  contactNumber: DecimalFilter
+}
+
+input ContractorFilter {
+  code: StringFilter
+  name: StringFilter
+  notes: StringFilter
+  importDirectory: StringFilter
+  exportDirectory: StringFilter
+  interfaceType: StringFilter
+  defaultGangCode: StringFilter
+  contactNumber: DecimalFilter
+  parentCompanyCode: StringFilter
+  workValueLimit: DecimalFilter
+  tenderAwardValue: DecimalFilter
+  tenderBiddingValue: DecimalFilter
+  disqualified: StringFilter
+  vendorId: StringFilter
+  vendorDivision: StringFilter
+  paymentRequestImportLevel: StringFilter
+  taxStatusCode: StringFilter
+}
+
+type CoordinateTolerance {
+  code: String
+  key: ID
+  name: String
+  nominalMapExtent: Decimal
+}
+
+input CoordinateToleranceFilter {
+  code: StringFilter
+  name: StringFilter
+  nominalMapExtent: DecimalFilter
+}
+
+type CorrespondenceType {
+  code: String
+  key: ID
+  name: String
+}
+
+input CorrespondenceTypeFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type CostCodeCategory {
+  code: String
+  description: String
+  key: ID
+}
+
+input CostCodeCategoryFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type County {
+  id: Decimal
+  key: ID
+  name: String
+  towns(filter: TownFilter): [Town]
+}
+
+input CountyFilter {
+  id: DecimalFilter
+  name: StringFilter
+}
+
+type Customer {
+  code: String
+  description: String
+  featureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+  features(filter: FeatureFilter): [Feature]
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  orderJobs(filter: OrderJobFilter): [OrderJob]
+  sites(filter: SiteFilter): [Site]
+}
+
+input CustomerFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type CustomerType {
+  code: String
+  contacts(filter: ContactFilter): [Contact]
+  description: String
+  enquiryCustomers(filter: EnquiryCustomerFilter): [EnquiryCustomer]
+  key: ID
+}
+
+input CustomerTypeFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type DataSecurityKey {
+  actionOfficers(filter: ActionOfficerFilter): [ActionOfficer]
+  code: String
+  contractAreas(filter: ContractAreaFilter): [ContractArea]
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  jobStatuses(filter: JobStatusFilter): [JobStatus]
+  key: Decimal
+  name: String
+  notes: String
+  userLogins(filter: UserFilter): [User]
+}
+
+input DataSecurityKeyFilter {
+  key: DecimalFilter
+  code: StringFilter
+  name: StringFilter
+  notes: StringFilter
+}
+
+scalar DateTime
+
+input DateTimeFilter {
+  moreThanDaysAgo: Decimal
+  lessThanDaysAgo: Decimal
+  greaterThan: DateTime
+  lessThan: DateTime
+  hasValue: Boolean
+}
+
+type DateType {
+  code: String
+  deviceDataKeyKey: Decimal
+  displayOrder: Decimal
+  featureDates(filter: FeatureDateFilter): [FeatureDate]
+  key: ID
+  name: String
+}
+
+input DateTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  displayOrder: DecimalFilter
+  deviceDataKeyKey: DecimalFilter
+}
+
+scalar Decimal
+
+input DecimalFilter {
+  equals: Decimal
+  greaterThan: Decimal
+  greaterThanEquals: Decimal
+  lessThan: Decimal
+  lessThanEquals: Decimal
+  hasValue: Boolean
+}
+
+type Defect {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  altitude: Decimal
+  customerReference: String
+  defectNumber: Decimal
+  defectStatus: String
+  defectType(filter: DefectTypeFilter): DefectType
+  defectTypeCode: String
+  description: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  easting: Decimal
+  endDistance: Decimal
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  estimatedCost: Decimal
+  feature(filter: FeatureFilter): Feature
+  geometry: WKT
+  inspectionBatch(filter: InspectionBatchFilter): InspectionBatch
+  inspectionBatchNumber: Decimal
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  key: ID
+  location: String
+  loggedDate: DateTime
+  northing: Decimal
+  notes: String
+  observationType(filter: ObservationTypeFilter): ObservationType
+  observationTypeKey: Decimal
+  officerCode: String
+  organisationCode: String
+  plotNumber: Decimal
+  priority(filter: PriorityFilter): Priority
+  priorityCode: String
+  rating: Decimal
+  siteCode: String
+  startDistance: Decimal
+  supersedesDefect: Decimal
+  targetDate: DateTime
+  xspCode: String
+}
+
+input DefectFilter {
+  inspectionBatchNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  defectNumber: DecimalFilter
+  description: StringFilter
+  loggedDate: DateTimeFilter
+  officerCode: StringFilter
+  defectTypeCode: StringFilter
+  location: StringFilter
+  notes: StringFilter
+  jobNumber: DecimalFilter
+  easting: DecimalFilter
+  northing: DecimalFilter
+  altitude: DecimalFilter
+  defectStatus: StringFilter
+  organisationCode: StringFilter
+  startDistance: DecimalFilter
+  endDistance: DecimalFilter
+  rating: DecimalFilter
+  xspCode: StringFilter
+  customerReference: StringFilter
+  priorityCode: StringFilter
+  observationTypeKey: DecimalFilter
+  estimatedCost: DecimalFilter
+  targetDate: DateTimeFilter
+  supersedesDefect: DecimalFilter
+  geometry: SpatialFilter
+}
+
+type DefectType {
+  categoryKey: Decimal
+  classification: String
+  code: String
+  dead: String
+  defects(filter: DefectFilter): [Defect]
+  deviceDataKeyKey: Decimal
+  enquirySubject(filter: EnquirySubjectFilter): EnquirySubject
+  enquirySubjectCode: String
+  fastDefect: String
+  jobType(filter: JobTypeFilter): JobType
+  jobTypeKey: Decimal
+  key: ID
+  name: String
+  rating: Decimal
+  typeOfServiceCode: String
+}
+
+input DefectTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  classification: StringFilter
+  rating: DecimalFilter
+  dead: StringFilter
+  typeOfServiceCode: StringFilter
+  enquirySubjectCode: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  jobTypeKey: DecimalFilter
+  categoryKey: DecimalFilter
+  fastDefect: StringFilter
+}
+
+type Designation {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+  trafficSensitive: Boolean
+}
+
+input DesignationFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  trafficSensitive: StringFilter
+}
+
+type DesignationPeriod {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+}
+
+input DesignationPeriodFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+}
+
+type DocumentLink {
+  documentDate: DateTime
+  documentName: String
+  documentNotes: String
+  documentNumber: Decimal
+  key: ID
+  modifiedBy(filter: UserFilter): User
+  modifiedByLoginName: String
+  modifiedDate: DateTime
+  url: DocumentUrl
+}
+
+input DocumentLinkFilter {
+  documentNumber: DecimalFilter
+  documentNotes: StringFilter
+  documentName: StringFilter
+  documentDate: DateTimeFilter
+  modifiedByLoginName: StringFilter
+  modifiedDate: DateTimeFilter
+}
+
+scalar DocumentUrl
+
+type EnquiryClassification {
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  code: String
+  description: String
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  key: ID
+}
+
+input EnquiryClassificationFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type EnquiryCustomer {
+  alternatePhone: String
+  appendSite: String
+  contactMethod: String
+  contactReference: String
+  countyName: String
+  customerDate: DateTime
+  customerNumber: Decimal
+  customerReference: String
+  customerType(filter: CustomerTypeFilter): CustomerType
+  customerTypeCode: String
+  email: String
+  enquiryCustomerLinks(filter: EnquiryCustomerLinkFilter): [EnquiryCustomerLink]
+  enquiryMethod(filter: EnquiryMethodFilter): EnquiryMethod
+  fax: String
+  forename: String
+  key: ID
+  localityName: String
+  loggedByLoginName: String
+  loggedByUser(filter: UserFilter): User
+  loggedDate: DateTime
+  methodCode: String
+  mobilePhone: String
+  phone: String
+  pointOfContact(filter: PointOfContactFilter): PointOfContact
+  pointOfContactCode: String
+  postCode: String
+  propertyAddress: String
+  propertyReference: String
+  streetDescription: String
+  subAddress: String
+  surname: String
+  title: String
+  townName: String
+}
+
+input EnquiryCustomerFilter {
+  customerNumber: DecimalFilter
+  loggedDate: DateTimeFilter
+  surname: StringFilter
+  loggedByLoginName: StringFilter
+  customerTypeCode: StringFilter
+  methodCode: StringFilter
+  phone: StringFilter
+  customerReference: StringFilter
+  pointOfContactCode: StringFilter
+  propertyReference: StringFilter
+  propertyAddress: StringFilter
+  streetDescription: StringFilter
+  localityName: StringFilter
+  townName: StringFilter
+  countyName: StringFilter
+  postCode: StringFilter
+  email: StringFilter
+  alternatePhone: StringFilter
+  fax: StringFilter
+  appendSite: StringFilter
+  title: StringFilter
+  forename: StringFilter
+  subAddress: StringFilter
+  customerDate: DateTimeFilter
+  contactReference: StringFilter
+  mobilePhone: StringFilter
+  contactMethod: StringFilter
+}
+
+type EnquiryCustomerLink {
+  centralEnquiry(filter: CentralEnquiryFilter): CentralEnquiry
+  correspondenceLogNumber: Decimal
+  customerNumber: Decimal
+  enquiryCustomer(filter: EnquiryCustomerFilter): EnquiryCustomer
+  enquiryExported: String
+  enquiryNumber: Decimal
+  key: ID
+}
+
+input EnquiryCustomerLinkFilter {
+  customerNumber: DecimalFilter
+  enquiryNumber: DecimalFilter
+  correspondenceLogNumber: DecimalFilter
+  enquiryExported: StringFilter
+}
+
+type EnquiryLink {
+  centralEnquiry(filter: CentralEnquiryFilter): CentralEnquiry
+  contract(filter: ContractFilter): Contract
+  contractCode: String
+  contractor(filter: ContractorFilter): Contractor
+  contractorCode: String
+  defect(filter: DefectFilter): Defect
+  defectNumber: Decimal
+  distance: Decimal
+  enquiryNumber: Decimal
+  failureNumber: Decimal
+  feature(filter: FeatureFilter): Feature
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  key: ID
+  notificationFlag: String
+  plotNumber: Decimal
+  site(filter: SiteFilter): Site
+  siteCode: String
+  xspCode: String
+}
+
+input EnquiryLinkFilter {
+  enquiryNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  jobNumber: DecimalFilter
+  contractCode: StringFilter
+  notificationFlag: StringFilter
+  defectNumber: DecimalFilter
+  failureNumber: DecimalFilter
+  contractorCode: StringFilter
+  distance: DecimalFilter
+  xspCode: StringFilter
+}
+
+type EnquiryMethod {
+  code: String
+  description: String
+  enquiryCustomers(filter: EnquiryCustomerFilter): [EnquiryCustomer]
+  key: ID
+}
+
+input EnquiryMethodFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type EnquiryStatus {
+  availableForScheduling: String
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  code: String
+  dead: String
+  deviceDataKeyKey: Decimal
+  enquiryStatusLogs(filter: EnquiryStatusLogFilter): [EnquiryStatusLog]
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  followUpCode: String
+  isOutstanding: String
+  isStarted: String
+  jobStatuses(filter: JobStatusFilter): [JobStatus]
+  key: ID
+  name: String
+  resetPrintedFlag: String
+  sendToDevice: String
+}
+
+input EnquiryStatusFilter {
+  code: StringFilter
+  name: StringFilter
+  isOutstanding: StringFilter
+  followUpCode: StringFilter
+  resetPrintedFlag: StringFilter
+  dead: StringFilter
+  sendToDevice: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  availableForScheduling: StringFilter
+  isStarted: StringFilter
+}
+
+type EnquiryStatusLog {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  alertRefresh: String
+  centralEnquiry(filter: CentralEnquiryFilter): CentralEnquiry
+  effectiveDate: DateTime
+  enquiryNumber: Decimal
+  enquiryStatus(filter: EnquiryStatusFilter): EnquiryStatus
+  enquiryStatusCode: String
+  followUpCode: String
+  followUpDate: DateTime
+  key: ID
+  loggedByLoginName: String
+  loggedByUser(filter: UserFilter): User
+  loggedDate: DateTime
+  logNumber: Decimal
+  notes: String
+  officerCode: String
+}
+
+input EnquiryStatusLogFilter {
+  enquiryNumber: DecimalFilter
+  logNumber: DecimalFilter
+  loggedDate: DateTimeFilter
+  loggedByLoginName: StringFilter
+  officerCode: StringFilter
+  enquiryStatusCode: StringFilter
+  followUpDate: DateTimeFilter
+  notes: StringFilter
+  followUpCode: StringFilter
+  effectiveDate: DateTimeFilter
+  alertRefresh: StringFilter
+}
+
+type EnquirySubject {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  allowContractorNotification: String
+  allowDefectCreation: String
+  allowFailureCreation: String
+  allowJobCreation: String
+  bookingTypeKey: Decimal
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  code: String
+  contractCode: String
+  copyContactNameToJobLocation: String
+  copyCustomer: String
+  costCodeCode: String
+  dataKey(filter: DataSecurityKeyFilter): DataSecurityKey
+  dataKeyKey: Decimal
+  dead: String
+  defaultDuration: Decimal
+  defectTypes(filter: DefectTypeFilter): [DefectType]
+  enableEnquiryDuplicateCheck: String
+  enquiryClassification(filter: EnquiryClassificationFilter): EnquiryClassification
+  enquiryClassificationCode: String
+  enquiryStatus(filter: EnquiryStatusFilter): EnquiryStatus
+  enquiryStatusCode: String
+  exportFlag: String
+  followUpCode: String
+  jobOption: String
+  jobTypeKey: Decimal
+  key: ID
+  letterTypeCode: String
+  name: String
+  notes: String
+  officerCode: String
+  priorityCode: String
+  responseTypeFlag: String
+  responsibleOfficer(filter: ActionOfficerFilter): ActionOfficer
+  responsibleOfficerCode: String
+  serviceCode: String
+  showAddressCheckWarning: String
+  showEffectiveDateNotEditedWarning: String
+  sorGroupCode: String
+  subjectCategory(filter: SubjectCategoryFilter): SubjectCategory
+  subjectCategoryCode: String
+  typeOfService(filter: TypeOfServiceFilter): TypeOfService
+  workTypeCode: String
+}
+
+input EnquirySubjectFilter {
+  serviceCode: StringFilter
+  code: StringFilter
+  name: StringFilter
+  officerCode: StringFilter
+  enquiryStatusCode: StringFilter
+  enquiryClassificationCode: StringFilter
+  enableEnquiryDuplicateCheck: StringFilter
+  allowJobCreation: StringFilter
+  allowContractorNotification: StringFilter
+  allowDefectCreation: StringFilter
+  notes: StringFilter
+  copyCustomer: StringFilter
+  subjectCategoryCode: StringFilter
+  followUpCode: StringFilter
+  allowFailureCreation: StringFilter
+  copyContactNameToJobLocation: StringFilter
+  responsibleOfficerCode: StringFilter
+  responseTypeFlag: StringFilter
+  letterTypeCode: StringFilter
+  exportFlag: StringFilter
+  dead: StringFilter
+  showEffectiveDateNotEditedWarning: StringFilter
+  dataKeyKey: DecimalFilter
+  bookingTypeKey: DecimalFilter
+  showAddressCheckWarning: StringFilter
+  contractCode: StringFilter
+  priorityCode: StringFilter
+  costCodeCode: StringFilter
+  sorGroupCode: StringFilter
+  workTypeCode: StringFilter
+  jobOption: StringFilter
+  jobTypeKey: DecimalFilter
+  defaultDuration: DecimalFilter
+}
+
+type ExcavationType {
+  code: String
+  dead: Boolean
+  externalReference: String
+  key: ID
+  name: String
+  notes: String
+}
+
+input ExcavationTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  notes: StringFilter
+  dead: StringFilter
+}
+
+type ExternalSystem {
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  exportPath: String
+  importPath: String
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  name: String
+  number: Decimal
+}
+
+input ExternalSystemFilter {
+  number: DecimalFilter
+  name: StringFilter
+  importPath: StringFilter
+  exportPath: StringFilter
+}
+
+type FailureSeverity {
+  code: String
+  key: ID
+  name: String
+  noticeTitle: String
+}
+
+input FailureSeverityFilter {
+  code: StringFilter
+  name: StringFilter
+  noticeTitle: StringFilter
+}
+
+type Feature {
+  activeFromDate: DateTime
+  activeToDate: DateTime
+  area(filter: AreaFilter): Area
+  areaCode: String
+  assessed: String
+  assetCategoryCode: String
+  assetControl(filter: AssetControlFilter): AssetControl
+  assetFunction(filter: AssetFunctionFilter): AssetFunction
+  attribute_ANTI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_ASSS(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_ASTG(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_ATSE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_BISP(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_BNMT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_BORN(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_BOXD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_BTFL(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_CDIM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_COAT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_COMA(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_COMM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_COND(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_CREW(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_CULD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_DASH(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_DELE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_DPTI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_DYNT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_FENT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_FOOT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_FRAN(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GAAS(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GAO(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GATY(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GCOM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GSGT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_GSI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_INSP(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_IOJC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_IRRI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_KPI6(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_LANE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_LAT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_LIDT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_LONG(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MATC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MATE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MATT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MEDI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MEDT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MESS(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MONT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_MSSI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_NETC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA00(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA01(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA02(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA03(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA04(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA05(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA06(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA07(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA08(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA09(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA10(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PA11(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PARC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PARE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PATH(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PODO(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_POST(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PROT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_PRTC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RATY(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDCL(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDNL(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDPT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDTD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDTM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDUC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDUR(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDUS(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RDWI(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RESP(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_ROLC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RRD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_RWTC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SABA(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SHCT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SHP(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SICO(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SIGN(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SIZC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SPBL(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SSFD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SSFT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SSLO(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SSPA(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SSSD(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_STCL(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_STNM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_STRC(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_STRT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_STTY(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SUP(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SURA(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_SURT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TBMT(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TCTY(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TDIS(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TERM(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TESE(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TESN(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_TPAR(filter: FeatureAttributeFilter): FeatureAttribute
+  attribute_WSTY(filter: FeatureAttributeFilter): FeatureAttribute
+  attributes(filter: FeatureAttributeFilter): [FeatureAttribute]
+  centralAssetId: String
+  centroidAltitude: Decimal
+  centroidEasting: Decimal
+  centroidNorthing: Decimal
+  classificationCode: String
+  conditions(filter: FeatureConditionFilter): [FeatureCondition]
+  contractArea(filter: ContractAreaFilter): ContractArea
+  contractAreaCode: String
+  controlCode: String
+  costCodeCode: String
+  customer(filter: CustomerFilter): Customer
+  customerCode: String
+  date_GCD(filter: FeatureDateFilter): FeatureDate
+  date_GDA(filter: FeatureDateFilter): FeatureDate
+  date_GDM(filter: FeatureDateFilter): FeatureDate
+  date_GID(filter: FeatureDateFilter): FeatureDate
+  date_RDAT(filter: FeatureDateFilter): FeatureDate
+  dates(filter: FeatureDateFilter): [FeatureDate]
+  dead: String
+  defects(filter: DefectFilter): [Defect]
+  documents(filter: FeatureDocumentFilter): [FeatureDocument]
+  endDate: DateTime
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  extentOneAltitude: Decimal
+  extentOneEasting: Decimal
+  extentOneNorthing: Decimal
+  extentTwoAltitude: Decimal
+  extentTwoEasting: Decimal
+  extentTwoNorthing: Decimal
+  externalAssetId: String
+  featureDocuments(filter: FeatureDocumentFilter): [FeatureDocument]
+  featureId: String
+  featureKey: Decimal
+  featureType(filter: FeatureTypeFilter): FeatureType
+  featureTypeCode: String
+  functionCode: String
+  geometry: WKT
+  hierarchyCode: Decimal
+  hierarchyLevel(filter: HierarchyLevelFilter): HierarchyLevel
+  inspectionFeatures(filter: InspectionFeatureFilter): [InspectionFeature]
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  location: String
+  measurement_AVEH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_BISP(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_BTBW(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_CLC(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_CNSD(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_CNSH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_CNSW(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DEFI(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DEPT(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DIA_(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DIAM(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DRCR(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DRDC(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DRDH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DRDI(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_DRWT(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_ENCH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_FILH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_GARE(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_GHGT(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_GLEN(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_GNUM(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_GWID(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_HEIG(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_KTKW(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_LAT(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_LNKM(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_LONG(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MAXH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MISL(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MON(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MXHG(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MXPH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_MXSL(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NOFJ(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NOSP(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NOXJ(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NTAN(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NTOI(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NUPO(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_NURU(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_PCCW(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_POSP(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_PVCL(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_PVCR(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_RDCE(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_RDCS(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_RDOF(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_RLGH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_RLNO(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIDI(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIHE(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIPC(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIWI(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIZ3(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SIZE(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_STCH(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_STLN(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_STWD(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SWED(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_SWST(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_WARR(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_WDKM(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurement_WIDT(filter: FeatureMeasurementFilter): FeatureMeasurement
+  measurements(filter: FeatureMeasurementFilter): [FeatureMeasurement]
+  notes: String
+  plotNumber: Decimal
+  propertyId: String
+  replacementUnitCost: Decimal
+  replacementValue: Decimal
+  residualUnitCost: Decimal
+  residualValue: Decimal
+  revisionNumber: Decimal
+  site(filter: SiteFilter): Site
+  siteClass(filter: ClassificationFilter): Classification
+  siteCode: String
+  startDate: DateTime
+  surveyDate: DateTime
+  userLogin(filter: UserFilter): User
+  validatedByLoginName: String
+  validatedDate: DateTime
+  valuationCostCodeCode: String
+  valuationLogNumber: Decimal
+  valuationMethodCode: String
+  valuationQuantity: Decimal
+  ward(filter: WardFilter): Ward
+  wardCode: String
+}
+
+type FeatureAttribute {
+  attributeType(filter: AttributeTypeFilter): AttributeType
+  attributeTypeCode: String
+  attributeValue(filter: AttributeValueFilter): AttributeValue
+  attributeValueCode: String
+  feature(filter: FeatureFilter): Feature
+  key: ID
+  notes: String
+  plotNumber: Decimal
+  siteCode: String
+}
+
+input FeatureAttributeFilter {
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  attributeTypeCode: StringFilter
+  attributeValueCode: StringFilter
+  notes: StringFilter
+}
+
+type FeatureCondition {
+  feature(filter: FeatureFilter): Feature
+  gradeCode: String
+  key: ID
+  notes: String
+  observationParameterOption(filter: ObservationParameterOptionFilter): ObservationParameterOption
+  observationType(filter: ObservationTypeFilter): ObservationType
+  observationTypeKey: Decimal
+  plotNumber: Decimal
+  score: Decimal
+  siteCode: String
+}
+
+input FeatureConditionFilter {
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  gradeCode: StringFilter
+  notes: StringFilter
+  score: DecimalFilter
+  observationTypeKey: DecimalFilter
+}
+
+type FeatureDate {
+  dateType(filter: DateTypeFilter): DateType
+  dateTypeCode: String
+  feature(filter: FeatureFilter): Feature
+  key: ID
+  notes: String
+  plotNumber: Decimal
+  siteCode: String
+  value: DateTime
+}
+
+input FeatureDateFilter {
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  dateTypeCode: StringFilter
+  notes: StringFilter
+  value: DateTimeFilter
+}
+
+type FeatureDocument {
+  documentDate: DateTime
+  documentNotes: String
+  documentNumber: Decimal
+  documentPath: String
+  feature(filter: FeatureFilter): Feature
+  key: ID
+  modifiedBy(filter: UserFilter): User
+  modifiedByLoginName: String
+  modifiedDate: DateTime
+  url: DocumentUrl
+}
+
+input FeatureDocumentFilter {
+  documentNumber: DecimalFilter
+  documentNotes: StringFilter
+  documentPath: StringFilter
+  documentDate: DateTimeFilter
+  modifiedByLoginName: StringFilter
+  modifiedDate: DateTimeFilter
+}
+
+input FeatureFilter {
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  externalAssetId: StringFilter
+  location: StringFilter
+  dead: StringFilter
+  costCodeCode: StringFilter
+  contractAreaCode: StringFilter
+  wardCode: StringFilter
+  areaCode: StringFilter
+  customerCode: StringFilter
+  notes: StringFilter
+  featureTypeCode: StringFilter
+  classificationCode: StringFilter
+  surveyDate: DateTimeFilter
+  extentOneEasting: DecimalFilter
+  extentOneNorthing: DecimalFilter
+  extentOneAltitude: DecimalFilter
+  extentTwoEasting: DecimalFilter
+  extentTwoNorthing: DecimalFilter
+  extentTwoAltitude: DecimalFilter
+  centroidEasting: DecimalFilter
+  centroidNorthing: DecimalFilter
+  centroidAltitude: DecimalFilter
+  centralAssetId: StringFilter
+  featureId: StringFilter
+  featureKey: DecimalFilter
+  startDate: DateTimeFilter
+  endDate: DateTimeFilter
+  hierarchyCode: DecimalFilter
+  propertyId: StringFilter
+  functionCode: StringFilter
+  controlCode: StringFilter
+  assetCategoryCode: StringFilter
+  activeFromDate: DateTimeFilter
+  activeToDate: DateTimeFilter
+  valuationLogNumber: DecimalFilter
+  valuationMethodCode: StringFilter
+  replacementUnitCost: DecimalFilter
+  replacementValue: DecimalFilter
+  valuationQuantity: DecimalFilter
+  residualUnitCost: DecimalFilter
+  residualValue: DecimalFilter
+  assessed: StringFilter
+  valuationCostCodeCode: StringFilter
+  validatedByLoginName: StringFilter
+  validatedDate: DateTimeFilter
+  geometry: SpatialFilter
+  revisionNumber: DecimalFilter
+}
+
+type FeatureGroup {
+  certaintyWithinType: Decimal
+  code: String
+  contractArea(filter: ContractAreaFilter): ContractArea
+  contractAreaCode: String
+  costCodeCode: String
+  customer(filter: CustomerFilter): Customer
+  customerCode: String
+  deviceDataKeyKey: Decimal
+  discrepancyDataSourceKey: Decimal
+  featureGroupClass: String
+  featureTypes(filter: FeatureTypeFilter): [FeatureType]
+  inventoryTypeCode: String
+  key: ID
+  linkedFeatureGroupCode: String
+  maintainHistory: String
+  mapLayerGeometryType: String
+  mapLayerKey: Decimal
+  name: String
+  plotNumberFrom: Decimal
+  plotNumberIncrement: Decimal
+  plotNumberTo: Decimal
+  priceFactorSmartAttributeTypeCode: String
+  primaryMeasurementCode: String
+  primaryMeasurementType(filter: MeasurementTypeFilter): MeasurementType
+  referentialIntegrityMapLayerKey: Decimal
+  selectForAdhocInspection: String
+  showIdentificationImage: String
+  siteGroup(filter: SiteGroupFilter): SiteGroup
+  siteGroupKey: Decimal
+  smartTypeCode: String
+  specificMenuOption: String
+  tabAdditional: Decimal
+  tabAttribute: Decimal
+  tabGeography: Decimal
+  tabHistory: Decimal
+  tabNode: Decimal
+  tabReference: Decimal
+  tabSmartAttrib: Decimal
+  tabValuation: Decimal
+  validDataSource: Decimal
+  valuationMeasurementType(filter: MeasurementTypeFilter): MeasurementType
+  valuationMeasurementTypeCode: String
+}
+
+input FeatureGroupFilter {
+  code: StringFilter
+  name: StringFilter
+  primaryMeasurementCode: StringFilter
+  selectForAdhocInspection: StringFilter
+  valuationMeasurementTypeCode: StringFilter
+  featureGroupClass: StringFilter
+  inventoryTypeCode: StringFilter
+  certaintyWithinType: DecimalFilter
+  smartTypeCode: StringFilter
+  maintainHistory: StringFilter
+  priceFactorSmartAttributeTypeCode: StringFilter
+  mapLayerKey: DecimalFilter
+  siteGroupKey: DecimalFilter
+  linkedFeatureGroupCode: StringFilter
+  specificMenuOption: StringFilter
+  tabAttribute: DecimalFilter
+  tabAdditional: DecimalFilter
+  tabGeography: DecimalFilter
+  tabValuation: DecimalFilter
+  tabSmartAttrib: DecimalFilter
+  tabNode: DecimalFilter
+  tabHistory: DecimalFilter
+  tabReference: DecimalFilter
+  discrepancyDataSourceKey: DecimalFilter
+  contractAreaCode: StringFilter
+  customerCode: StringFilter
+  costCodeCode: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  plotNumberFrom: DecimalFilter
+  plotNumberTo: DecimalFilter
+  plotNumberIncrement: DecimalFilter
+  validDataSource: DecimalFilter
+  referentialIntegrityMapLayerKey: DecimalFilter
+  showIdentificationImage: StringFilter
+  mapLayerGeometryType: StringFilter
+}
+
+type FeatureMeasurement {
+  estimated: String
+  feature(filter: FeatureFilter): Feature
+  key: ID
+  measurementType(filter: MeasurementTypeFilter): MeasurementType
+  measurementTypeCode: String
+  plotNumber: Decimal
+  quantity: Decimal
+  siteCode: String
+}
+
+input FeatureMeasurementFilter {
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  measurementTypeCode: StringFilter
+  quantity: DecimalFilter
+  estimated: StringFilter
+}
+
+type FeatureType {
+  assetCategoryCode: String
+  code: String
+  displayOrder: Decimal
+  externalReference: String
+  featureGroup(filter: FeatureGroupFilter): FeatureGroup
+  featureGroupCode: String
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  maintenanceRegimes(filter: MaintenanceRegimeFilter): [MaintenanceRegime]
+  mapSymbol: String
+  name: String
+  numberOfLanes: Decimal
+  numberOfNearsideLanes: Decimal
+}
+
+input FeatureTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  featureGroupCode: StringFilter
+  assetCategoryCode: StringFilter
+  numberOfLanes: DecimalFilter
+  displayOrder: DecimalFilter
+  numberOfNearsideLanes: DecimalFilter
+  externalReference: StringFilter
+  mapSymbol: StringFilter
+}
+
+type FeeWorkCategory {
+  code: String
+  key: ID
+  name: String
+}
+
+input FeeWorkCategoryFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type FeeWorkType {
+  code: String
+  key: ID
+  name: String
+}
+
+input FeeWorkTypeFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type HierarchyLevel {
+  code: Decimal
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  name: String
+}
+
+input HierarchyLevelFilter {
+  code: DecimalFilter
+  name: StringFilter
+}
+
+type HighwayDedication {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+}
+
+input HighwayDedicationFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+}
+
+type InspectionBatch {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  completionDate: DateTime
+  creationDate: DateTime
+  defects(filter: DefectFilter): [Defect]
+  description: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  inspectionBatchNumber: Decimal
+  inspectionFeatures(filter: InspectionFeatureFilter): [InspectionFeature]
+  inspectionRoute(filter: InspectionRouteFilter): InspectionRoute
+  inspectionRouteCode: String
+  key: ID
+  loggedByLoginName: String
+  loggedByUser(filter: UserFilter): User
+  maintenanceRegime(filter: MaintenanceRegimeFilter): MaintenanceRegime
+  officerCode: String
+  regimeCode: String
+  signoffDate: DateTime
+  workgroupCode: String
+}
+
+input InspectionBatchFilter {
+  inspectionBatchNumber: DecimalFilter
+  description: StringFilter
+  inspectionRouteCode: StringFilter
+  workgroupCode: StringFilter
+  officerCode: StringFilter
+  creationDate: DateTimeFilter
+  completionDate: DateTimeFilter
+  signoffDate: DateTimeFilter
+  loggedByLoginName: StringFilter
+  regimeCode: StringFilter
+}
+
+type InspectionCondition {
+  gradeCode: String
+  inspectionBatchNumber: Decimal
+  inspectionFeature(filter: InspectionFeatureFilter): InspectionFeature
+  key: ID
+  notes: String
+  observationParameterOption(filter: ObservationParameterOptionFilter): ObservationParameterOption
+  observationType(filter: ObservationTypeFilter): ObservationType
+  observationTypeKey: Decimal
+  observationValue: Decimal
+  plotNumber: Decimal
+  siteCode: String
+}
+
+input InspectionConditionFilter {
+  inspectionBatchNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  gradeCode: StringFilter
+  notes: StringFilter
+  observationValue: DecimalFilter
+  observationTypeKey: DecimalFilter
+}
+
+type InspectionFeature {
+  actionOfficer(filter: ActionOfficerFilter): ActionOfficer
+  conditions(filter: InspectionConditionFilter): [InspectionCondition]
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  expiryDate: DateTime
+  feature(filter: FeatureFilter): Feature
+  inspDueDate: DateTime
+  inspectedDate: DateTime
+  inspectionBatch(filter: InspectionBatchFilter): InspectionBatch
+  inspectionBatchNumber: Decimal
+  key: ID
+  officerCode: String
+  plotNumber: Decimal
+  siteCode: String
+}
+
+input InspectionFeatureFilter {
+  inspectionBatchNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  officerCode: StringFilter
+  inspectedDate: DateTimeFilter
+  expiryDate: DateTimeFilter
+  inspDueDate: DateTimeFilter
+}
+
+type InspectionGroup {
+  code: String
+  description: String
+  displayOrder: Decimal
+  externalReference: String
+  key: ID
+  signingLightingAndGuardingGroup: Boolean
+}
+
+input InspectionGroupFilter {
+  code: StringFilter
+  description: StringFilter
+  displayOrder: DecimalFilter
+  signingLightingAndGuardingGroup: StringFilter
+  externalReference: StringFilter
+}
+
+type InspectionRoute {
+  code: String
+  dead: String
+  inspectionBatches(filter: InspectionBatchFilter): [InspectionBatch]
+  inspectionMode: String
+  inspectionType(filter: InspectionTypeFilter): InspectionType
+  inspectionTypeCode: String
+  key: ID
+  name: String
+  notes: String
+  totalMeasurement: Decimal
+  workGroupCode: String
+}
+
+input InspectionRouteFilter {
+  code: StringFilter
+  name: StringFilter
+  inspectionTypeCode: StringFilter
+  totalMeasurement: DecimalFilter
+  workGroupCode: StringFilter
+  notes: StringFilter
+  inspectionMode: StringFilter
+  dead: StringFilter
+}
+
+type InspectionType {
+  code: String
+  dueDateRule: String
+  earliestFollowUpCode: String
+  followUpCode: String
+  inspectionRoutes(filter: InspectionRouteFilter): [InspectionRoute]
+  inspectionTypeFlag: String
+  isHighSpeed: String
+  key: ID
+  name: String
+  signoffRequired: String
+}
+
+input InspectionTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  inspectionTypeFlag: StringFilter
+  followUpCode: StringFilter
+  dueDateRule: StringFilter
+  signoffRequired: StringFilter
+  isHighSpeed: StringFilter
+  earliestFollowUpCode: StringFilter
+}
+
+type Interest {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+  sendNotice: Boolean
+}
+
+input InterestFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+  sendNotice: StringFilter
+}
+
+type Job {
+  actualCompletionDate: DateTime
+  actualStartDate: DateTime
+  altitude: Decimal
+  attribute_CIL(filter: JobAttributeFilter): JobAttribute
+  attribute_CIL1(filter: JobAttributeFilter): JobAttribute
+  attribute_LANE(filter: JobAttributeFilter): JobAttribute
+  attribute_PNO(filter: JobAttributeFilter): JobAttribute
+  attribute_TNO(filter: JobAttributeFilter): JobAttribute
+  attributes(filter: JobAttributeFilter): [JobAttribute]
+  childJobs(filter: JobFilter): [Job]
+  contract(filter: ContractFilter): Contract
+  contractArea(filter: ContractAreaFilter): ContractArea
+  contractAreaCode: String
+  contractCode: String
+  costCodeCode: String
+  currentLogNumber: Decimal
+  currentStatusLog(filter: JobStatusLogFilter): JobStatusLog
+  customer(filter: CustomerFilter): Customer
+  customerCode: String
+  customerReference: String
+  defects(filter: DefectFilter): [Defect]
+  description: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  easting: Decimal
+  endNode(filter: NodeFilter): Node
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  entryDate: DateTime
+  estimatedCompletionDate: DateTime
+  estimatedDuration: Decimal
+  estimatedStartDate: DateTime
+  externalJobReference: String
+  externalOrderReference: String
+  externalSystem(filter: ExternalSystemFilter): ExternalSystem
+  externalSystemNumber: Decimal
+  feature(filter: FeatureFilter): Feature
+  geometry: WKT
+  hazardTypeKey: Decimal
+  items(filter: JobItemFilter): [JobItem]
+  jobNumber: Decimal
+  jobType(filter: JobTypeFilter): JobType
+  jobTypeKey: Decimal
+  key: ID
+  lastStartedStatusLog(filter: JobStatusLogFilter): JobStatusLog
+  ledgerBatchNumber: Decimal
+  liabilityDate: DateTime
+  location: String
+  maintenanceRegime(filter: MaintenanceRegimeFilter): MaintenanceRegime
+  minimumValue: Decimal
+  node(filter: NodeFilter): Node
+  nodeKeyEnd: Decimal
+  nodeKeyStart: Decimal
+  northing: Decimal
+  orderHeader(filter: OrderHeaderFilter): [OrderHeader]
+  orderJob(filter: OrderJobFilter): OrderJob
+  orderNumber: Decimal
+  parentJob(filter: JobFilter): Job
+  parentJobNumber: Decimal
+  partialPayment: String
+  plotNumber: Decimal
+  priceFactor(filter: PriceFactorFilter): PriceFactor
+  priceFactorCode: String
+  priority(filter: PriorityFilter): Priority
+  priorityCode: String
+  regimeCode: String
+  sequenceNumber: Decimal
+  siteCode: String
+  statusFlag: String
+  statusLogs(filter: JobStatusLogFilter): [JobStatusLog]
+  surveyObservationEnd: Decimal
+  surveyObservationStart: Decimal
+  targetCompletionDate: DateTime
+  trafficManagementCode: String
+  transactionId: String
+  workHeaderNumber: Decimal
+  workstreamKey: Decimal
+  xspCode: String
+}
+
+type JobAttribute {
+  dateValue: DateTime
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  key: ID
+  numericValue: Decimal
+  operationalAttributeType(filter: OperationalAttributeTypeFilter): OperationalAttributeType
+  operationalAttributeTypeCode: String
+  operationalAttributeValue(filter: OperationalAttributeValueFilter): OperationalAttributeValue
+  operationalAttributeValueCode: String
+  textValue: String
+}
+
+input JobAttributeFilter {
+  jobNumber: DecimalFilter
+  operationalAttributeTypeCode: StringFilter
+  textValue: StringFilter
+  numericValue: DecimalFilter
+  dateValue: DateTimeFilter
+  operationalAttributeValueCode: StringFilter
+}
+
+input JobFilter {
+  jobNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  currentLogNumber: DecimalFilter
+  entryDate: DateTimeFilter
+  description: StringFilter
+  location: StringFilter
+  statusFlag: StringFilter
+  costCodeCode: StringFilter
+  customerCode: StringFilter
+  contractCode: StringFilter
+  priceFactorCode: StringFilter
+  minimumValue: DecimalFilter
+  partialPayment: StringFilter
+  estimatedCompletionDate: DateTimeFilter
+  easting: DecimalFilter
+  northing: DecimalFilter
+  altitude: DecimalFilter
+  ledgerBatchNumber: DecimalFilter
+  orderNumber: DecimalFilter
+  priorityCode: StringFilter
+  actualCompletionDate: DateTimeFilter
+  contractAreaCode: StringFilter
+  customerReference: StringFilter
+  liabilityDate: DateTimeFilter
+  estimatedStartDate: DateTimeFilter
+  xspCode: StringFilter
+  surveyObservationStart: DecimalFilter
+  surveyObservationEnd: DecimalFilter
+  nodeKeyStart: DecimalFilter
+  nodeKeyEnd: DecimalFilter
+  sequenceNumber: DecimalFilter
+  jobTypeKey: DecimalFilter
+  workHeaderNumber: DecimalFilter
+  actualStartDate: DateTimeFilter
+  targetCompletionDate: DateTimeFilter
+  trafficManagementCode: StringFilter
+  parentJobNumber: DecimalFilter
+  hazardTypeKey: DecimalFilter
+  externalSystemNumber: DecimalFilter
+  externalJobReference: StringFilter
+  externalOrderReference: StringFilter
+  transactionId: StringFilter
+  estimatedDuration: DecimalFilter
+  geometry: SpatialFilter
+  regimeCode: StringFilter
+  workstreamKey: DecimalFilter
+}
+
+type JobItem {
+  code: String
+  costCodeCode: String
+  depth: Decimal
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  key: ID
+  length: Decimal
+  measurementCode: String
+  measurementType(filter: MeasurementTypeFilter): MeasurementType
+  notes: String
+  number: Decimal
+  quantity: Decimal
+  sorItem(filter: SorItemFilter): SorItem
+  width: Decimal
+}
+
+input JobItemFilter {
+  jobNumber: DecimalFilter
+  number: DecimalFilter
+  code: StringFilter
+  width: DecimalFilter
+  length: DecimalFilter
+  depth: DecimalFilter
+  quantity: DecimalFilter
+  costCodeCode: StringFilter
+  measurementCode: StringFilter
+  notes: StringFilter
+}
+
+type JobStatus {
+  allowCommit: String
+  allowContractorItemImport: String
+  availableForInspection: String
+  availableForMonitoring: String
+  availableForPayment: String
+  availableForScheduling: String
+  availableToContractor: String
+  code: String
+  dead: String
+  deviceDataKeyKey: Decimal
+  enquiryStatus(filter: EnquiryStatusFilter): EnquiryStatus
+  enquiryStatusCode: String
+  exportToContractor: String
+  followupCode: String
+  includeInReducedStatusList: String
+  initiateStreetWorks: String
+  isComplete: String
+  isOutstanding: String
+  isStarted: String
+  jobStatusLogs(filter: JobStatusLogFilter): [JobStatusLog]
+  key: ID
+  name: String
+  notes: String
+  preventPaymentAuthorisation: String
+  priorities(filter: PriorityFilter): [Priority]
+  sendToDeviceForGang: String
+  sendToDeviceForOfficer: String
+  statusLocked: String
+  statusLockOverrideDataKey(filter: DataSecurityKeyFilter): DataSecurityKey
+  statusLockOverrideDataKeyKey: Decimal
+}
+
+input JobStatusFilter {
+  code: StringFilter
+  name: StringFilter
+  allowCommit: StringFilter
+  availableForPayment: StringFilter
+  isOutstanding: StringFilter
+  availableForInspection: StringFilter
+  enquiryStatusCode: StringFilter
+  availableToContractor: StringFilter
+  availableForMonitoring: StringFilter
+  followupCode: StringFilter
+  isComplete: StringFilter
+  preventPaymentAuthorisation: StringFilter
+  exportToContractor: StringFilter
+  allowContractorItemImport: StringFilter
+  statusLocked: StringFilter
+  statusLockOverrideDataKeyKey: DecimalFilter
+  deviceDataKeyKey: DecimalFilter
+  sendToDeviceForGang: StringFilter
+  sendToDeviceForOfficer: StringFilter
+  includeInReducedStatusList: StringFilter
+  isStarted: StringFilter
+  initiateStreetWorks: StringFilter
+  dead: StringFilter
+  notes: StringFilter
+  availableForScheduling: StringFilter
+}
+
+type JobStatusLog {
+  alertRefresh: String
+  allocatedOfficer(filter: ActionOfficerFilter): ActionOfficer
+  allocatedOfficerCode: String
+  effectiveDate: DateTime
+  exportBatchNumber: Decimal
+  followUpCode: String
+  followUpDate: DateTime
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  jobStatus(filter: JobStatusFilter): JobStatus
+  key: ID
+  loggedByLoginName: String
+  loggedByUser(filter: UserFilter): User
+  loggedDate: DateTime
+  number: Decimal
+  statusCode: String
+  statusNotes: String
+  stoppedStatusLog(filter: JobStatusLogFilter): JobStatusLog
+}
+
+input JobStatusLogFilter {
+  jobNumber: DecimalFilter
+  number: DecimalFilter
+  loggedDate: DateTimeFilter
+  allocatedOfficerCode: StringFilter
+  statusCode: StringFilter
+  followUpDate: DateTimeFilter
+  statusNotes: StringFilter
+  followUpCode: StringFilter
+  loggedByLoginName: StringFilter
+  effectiveDate: DateTimeFilter
+  alertRefresh: StringFilter
+  exportBatchNumber: DecimalFilter
+}
+
+type JobType {
+  code: String
+  dead: String
+  defaultHazardType: Decimal
+  defaultTrafficManagement: String
+  defectTypes(filter: DefectTypeFilter): [DefectType]
+  excavationRequired: String
+  externalDescription: String
+  jobs(filter: JobFilter): [Job]
+  key: Decimal
+  linkMultipleJobs: String
+  maintenanceRegimes(filter: MaintenanceRegimeFilter): [MaintenanceRegime]
+  name: String
+  streetWorksNoticing: String
+}
+
+input JobTypeFilter {
+  key: DecimalFilter
+  code: StringFilter
+  name: StringFilter
+  streetWorksNoticing: StringFilter
+  linkMultipleJobs: StringFilter
+  excavationRequired: StringFilter
+  externalDescription: StringFilter
+  defaultTrafficManagement: StringFilter
+  dead: StringFilter
+  defaultHazardType: DecimalFilter
+}
+
+type LabourType {
+  code: String
+  costPerHour: Decimal
+  costPerHourMultiplier: Decimal
+  key: ID
+  name: String
+}
+
+input LabourTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  costPerHour: DecimalFilter
+  costPerHourMultiplier: DecimalFilter
+}
+
+type Locality {
+  centralSiteAliases(filter: CentralSiteFilter): [CentralSite]
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  id: Decimal
+  key: ID
+  name: String
+  town(filter: TownFilter): Town
+  townId: Decimal
+}
+
+input LocalityFilter {
+  id: DecimalFilter
+  name: StringFilter
+  townId: DecimalFilter
+}
+
+type MaintenanceRegime {
+  aggregationFlag: Boolean
+  allowPastDueDates: Boolean
+  code: String
+  costCodeCode: String
+  currentCycle: Decimal
+  cycleDuration: Decimal
+  dead: Boolean
+  dueDateFlag: String
+  earliestFollowUp: String
+  featureType(filter: FeatureTypeFilter): FeatureType
+  featureTypeCode: String
+  followUpCode: String
+  inspectionBatches(filter: InspectionBatchFilter): [InspectionBatch]
+  jobs(filter: JobFilter): [Job]
+  jobType(filter: JobTypeFilter): JobType
+  jobTypeKey: String
+  key: ID
+  maxCycleDuration: Decimal
+  name: String
+  notes: String
+  priority(filter: PriorityFilter): Priority
+  priorityCode: String
+  regimeType: String
+  workTypeCode: String
+}
+
+input MaintenanceRegimeFilter {
+  code: StringFilter
+  name: StringFilter
+  maxCycleDuration: DecimalFilter
+  currentCycle: DecimalFilter
+  featureTypeCode: StringFilter
+  notes: StringFilter
+  dead: StringFilter
+  aggregationFlag: StringFilter
+  regimeType: StringFilter
+  cycleDuration: DecimalFilter
+  jobTypeKey: StringFilter
+  followUpCode: StringFilter
+  priorityCode: StringFilter
+  dueDateFlag: StringFilter
+  earliestFollowUp: StringFilter
+  costCodeCode: StringFilter
+  workTypeCode: StringFilter
+  allowPastDueDates: StringFilter
+}
+
+type MapZoom {
+  key: ID
+  scale: Decimal
+}
+
+input MapZoomFilter {
+  scale: DecimalFilter
+}
+
+type MeasurementType {
+  code: String
+  deviceDataKeyKey: Decimal
+  displayOrder: Decimal
+  featureMeasurements(filter: FeatureMeasurementFilter): [FeatureMeasurement]
+  jobItems(filter: JobItemFilter): [JobItem]
+  key: ID
+  name: String
+  orderItems(filter: OrderItemFilter): [OrderItem]
+  primaryMeasurementForFeatureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+  unitOfMeasure(filter: UnitOfMeasureFilter): UnitOfMeasure
+  unitOfMeasureCode: String
+  valuationMeasurementForFeatureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+}
+
+input MeasurementTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  unitOfMeasureCode: StringFilter
+  displayOrder: DecimalFilter
+  deviceDataKeyKey: DecimalFilter
+}
+
+type Node {
+  comment: String
+  easting: Decimal
+  job1s(filter: JobFilter): [Job]
+  jobs(filter: JobFilter): [Job]
+  key: Decimal
+  name: String
+  northing: Decimal
+}
+
+input NodeFilter {
+  key: DecimalFilter
+  name: StringFilter
+  comment: StringFilter
+  easting: DecimalFilter
+  northing: DecimalFilter
+}
+
+type ObservationImpact {
+  code: String
+  description: String
+  key: ID
+  observationTypes(filter: ObservationTypeFilter): [ObservationType]
+}
+
+input ObservationImpactFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type ObservationParameter {
+  canBeAggregated: String
+  canRecordAsPercentage: String
+  code: String
+  defectiveDimensionFactor: String
+  defectiveNumericFactor: Decimal
+  description: String
+  key: ID
+  maximum: Decimal
+  measurementCode: String
+  minimum: Decimal
+  name: String
+  notApplicableValueCode: String
+  observationTypes(filter: ObservationTypeFilter): [ObservationType]
+  options(filter: ObservationParameterOptionFilter): [ObservationParameterOption]
+  unitOfMeasure(filter: UnitOfMeasureFilter): UnitOfMeasure
+  unitOfMeasureCode: String
+}
+
+input ObservationParameterFilter {
+  code: StringFilter
+  name: StringFilter
+  unitOfMeasureCode: StringFilter
+  canRecordAsPercentage: StringFilter
+  canBeAggregated: StringFilter
+  minimum: DecimalFilter
+  maximum: DecimalFilter
+  description: StringFilter
+  defectiveNumericFactor: DecimalFilter
+  defectiveDimensionFactor: StringFilter
+  measurementCode: StringFilter
+  notApplicableValueCode: StringFilter
+}
+
+type ObservationParameterOption {
+  code: String
+  description: String
+  isAcceptable: String
+  key: ID
+  maximum: Decimal
+  minimum: Decimal
+  name: String
+  observationParameter(filter: ObservationParameterFilter): ObservationParameter
+  observationParameterCode: String
+  value: Decimal
+}
+
+input ObservationParameterOptionFilter {
+  observationParameterCode: StringFilter
+  code: StringFilter
+  name: StringFilter
+  description: StringFilter
+  value: DecimalFilter
+  minimum: DecimalFilter
+  maximum: DecimalFilter
+  isAcceptable: StringFilter
+}
+
+type ObservationType {
+  aggregationType: String
+  baseDate: String
+  code: String
+  conditionAssessment: String
+  dataType: String
+  dead: String
+  defaultValue: Decimal
+  defects(filter: DefectFilter): [Defect]
+  description: String
+  deviceDataKeyKey: Decimal
+  displayOrder: Decimal
+  externalReference: String
+  failureMode: String
+  featureConditions(filter: FeatureConditionFilter): [FeatureCondition]
+  functionalDefect: String
+  inspectionConditions(filter: InspectionConditionFilter): [InspectionCondition]
+  key: ID
+  name: String
+  observationImpact(filter: ObservationImpactFilter): ObservationImpact
+  observationImpactCode: String
+  observationParameter(filter: ObservationParameterFilter): ObservationParameter
+  observationParameterCode: String
+  storeZeroValues: String
+}
+
+input ObservationTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  description: StringFilter
+  dead: StringFilter
+  functionalDefect: StringFilter
+  storeZeroValues: StringFilter
+  displayOrder: DecimalFilter
+  aggregationType: StringFilter
+  conditionAssessment: StringFilter
+  observationParameterCode: StringFilter
+  observationImpactCode: StringFilter
+  defaultValue: DecimalFilter
+  failureMode: StringFilter
+  baseDate: StringFilter
+  dataType: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  externalReference: StringFilter
+}
+
+type OperationalAttributeType {
+  categoryKey: Decimal
+  code: String
+  defaultDate: Boolean
+  defaultNumericValue: Decimal
+  defaultPickValue: String
+  defaultStringValue: String
+  description: String
+  displayInline: Boolean
+  jobAttributes(filter: JobAttributeFilter): [JobAttribute]
+  key: ID
+  mandatoryOnJobs: String
+  maximumNumericValue: Decimal
+  minimumNumericValue: Decimal
+  mustChangeDefault: Boolean
+  name: String
+  type: String
+  values(filter: OperationalAttributeValueFilter): [OperationalAttributeValue]
+}
+
+input OperationalAttributeTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  description: StringFilter
+  type: StringFilter
+  categoryKey: DecimalFilter
+  mustChangeDefault: StringFilter
+  mandatoryOnJobs: StringFilter
+  displayInline: StringFilter
+  defaultStringValue: StringFilter
+  defaultNumericValue: DecimalFilter
+  defaultPickValue: StringFilter
+  defaultDate: StringFilter
+  minimumNumericValue: DecimalFilter
+  maximumNumericValue: DecimalFilter
+}
+
+type OperationalAttributeValue {
+  code: String
+  jobAttributes(filter: JobAttributeFilter): [JobAttribute]
+  key: ID
+  name: String
+  operationalAttributeType(filter: OperationalAttributeTypeFilter): OperationalAttributeType
+  operationalAttributeTypeCode: String
+  priorityMultiplier: Decimal
+}
+
+input OperationalAttributeValueFilter {
+  operationalAttributeTypeCode: StringFilter
+  code: StringFilter
+  name: StringFilter
+  priorityMultiplier: DecimalFilter
+}
+
+type OrderHeader {
+  committedByLoginName: String
+  committedByUser(filter: UserFilter): User
+  committedDate: DateTime
+  confirmationOnly: String
+  contract(filter: ContractFilter): Contract
+  contractArea(filter: ContractAreaFilter): ContractArea
+  contractAreaCode: String
+  contractCode: String
+  contractor(filter: ContractorFilter): Contractor
+  contractorCode: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  estimatedCompletionDate: DateTime
+  exportBatchNumber: Decimal
+  externalReference: String
+  jobs(filter: JobFilter): Job
+  key: ID
+  lastOrderJobNumber: Decimal
+  ledgerBatchNumber: Decimal
+  nonTermPaymentCount: Decimal
+  nonTermVariationCount: Decimal
+  notes: String
+  orderDate: DateTime
+  orderJobs(filter: OrderJobFilter): [OrderJob]
+  orderNumber: Decimal
+  orderType: String
+  pendingAuthorisation: String
+  printCount: Decimal
+  purchaseOrderNumber: String
+  statusName: String
+  workTypeCode: String
+}
+
+input OrderHeaderFilter {
+  contractCode: StringFilter
+  orderNumber: DecimalFilter
+  contractAreaCode: StringFilter
+  orderDate: DateTimeFilter
+  notes: StringFilter
+  externalReference: StringFilter
+  estimatedCompletionDate: DateTimeFilter
+  orderType: StringFilter
+  lastOrderJobNumber: DecimalFilter
+  workTypeCode: StringFilter
+  committedByLoginName: StringFilter
+  committedDate: DateTimeFilter
+  printCount: DecimalFilter
+  ledgerBatchNumber: DecimalFilter
+  confirmationOnly: StringFilter
+  exportBatchNumber: DecimalFilter
+  contractorCode: StringFilter
+  nonTermPaymentCount: DecimalFilter
+  nonTermVariationCount: DecimalFilter
+  purchaseOrderNumber: StringFilter
+  pendingAuthorisation: StringFilter
+}
+
+type OrderItem {
+  completedOccasion: Decimal
+  completedQuantity: Decimal
+  completedValue: Decimal
+  contractCode: String
+  costCodeCode: String
+  currentOccasion: Decimal
+  currentQuantity: Decimal
+  currentRate: Decimal
+  currentValue: Decimal
+  key: ID
+  measurementCode: String
+  measurementType(filter: MeasurementTypeFilter): MeasurementType
+  orderItemNumber: Decimal
+  orderJob(filter: OrderJobFilter): OrderJob
+  orderJobNumber: Decimal
+  orderNumber: Decimal
+  originalOccasion: Decimal
+  originalQuantity: Decimal
+  originalRate: Decimal
+  originalValue: Decimal
+  sorItem(filter: SorItemFilter): SorItem
+  sorItemCode: String
+  status: String
+}
+
+input OrderItemFilter {
+  contractCode: StringFilter
+  orderNumber: DecimalFilter
+  orderJobNumber: DecimalFilter
+  orderItemNumber: DecimalFilter
+  sorItemCode: StringFilter
+  measurementCode: StringFilter
+  originalQuantity: DecimalFilter
+  originalRate: DecimalFilter
+  originalOccasion: DecimalFilter
+  originalValue: DecimalFilter
+  currentQuantity: DecimalFilter
+  currentRate: DecimalFilter
+  currentOccasion: DecimalFilter
+  currentValue: DecimalFilter
+  completedQuantity: DecimalFilter
+  completedOccasion: DecimalFilter
+  completedValue: DecimalFilter
+  costCodeCode: StringFilter
+  status: StringFilter
+}
+
+type OrderJob {
+  contractCode: String
+  costCodeCode: String
+  customer(filter: CustomerFilter): Customer
+  customerCode: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  feePercentage: Decimal
+  fromFinancePeriodCode: String
+  incomeCostCodeCode: String
+  job(filter: JobFilter): Job
+  jobNumber: Decimal
+  jobPaymentNumber: Decimal
+  key: ID
+  minimumFee: Decimal
+  minimumValue: Decimal
+  orderHeader(filter: OrderHeaderFilter): OrderHeader
+  orderItems(filter: OrderItemFilter): [OrderItem]
+  orderJobNumber: Decimal
+  orderNumber: Decimal
+  originalToFinancePeriodCode: String
+  partialPayment: String
+  plotNumber: Decimal
+  priceFactor(filter: PriceFactorFilter): PriceFactor
+  priceFactorCode: String
+  regimeCode: String
+  siteCode: String
+  status: String
+  toFinancePeriodCode: String
+}
+
+input OrderJobFilter {
+  contractCode: StringFilter
+  orderNumber: DecimalFilter
+  orderJobNumber: DecimalFilter
+  siteCode: StringFilter
+  plotNumber: DecimalFilter
+  priceFactorCode: StringFilter
+  customerCode: StringFilter
+  costCodeCode: StringFilter
+  jobNumber: DecimalFilter
+  regimeCode: StringFilter
+  minimumValue: DecimalFilter
+  status: StringFilter
+  partialPayment: StringFilter
+  fromFinancePeriodCode: StringFilter
+  toFinancePeriodCode: StringFilter
+  jobPaymentNumber: DecimalFilter
+  originalToFinancePeriodCode: StringFilter
+  feePercentage: DecimalFilter
+  minimumFee: DecimalFilter
+  incomeCostCodeCode: StringFilter
+}
+
+type OrganisationGroup {
+  code: String
+  key: ID
+  name: String
+}
+
+input OrganisationGroupFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type OverheadType {
+  code: String
+  cost: Decimal
+  key: ID
+  name: String
+  percentage: Decimal
+}
+
+input OverheadTypeFilter {
+  code: StringFilter
+  name: StringFilter
+  percentage: DecimalFilter
+  cost: DecimalFilter
+}
+
+type PaymentRequestClassification {
+  code: String
+  contracts(filter: ContractFilter): [Contract]
+  dead: Boolean
+  displayOrder: Decimal
+  key: ID
+  name: String
+  notes: String
+}
+
+input PaymentRequestClassificationFilter {
+  code: StringFilter
+  name: StringFilter
+  notes: StringFilter
+  displayOrder: DecimalFilter
+  dead: StringFilter
+}
+
+type Period {
+  key: ID
+  name: String
+  periodNumber: Decimal
+  shortName: String
+}
+
+input PeriodFilter {
+  periodNumber: DecimalFilter
+  name: StringFilter
+  shortName: StringFilter
+}
+
+type PermitConditionType {
+  dead: Boolean
+  displayOrder: Decimal
+  externalReference: String
+  key: Decimal
+  name: String
+  notes: String
+}
+
+input PermitConditionTypeFilter {
+  key: DecimalFilter
+  name: StringFilter
+  externalReference: StringFilter
+  notes: StringFilter
+  displayOrder: DecimalFilter
+  dead: StringFilter
+}
+
+type PointOfContact {
+  code: String
+  description: String
+  enquiryCustomers(filter: EnquiryCustomerFilter): [EnquiryCustomer]
+  key: ID
+}
+
+input PointOfContactFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type PoliticalTendency {
+  code: String
+  description: String
+  key: ID
+}
+
+input PoliticalTendencyFilter {
+  code: StringFilter
+  description: StringFilter
+}
+
+type Position {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+}
+
+input PositionFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+}
+
+type PriceFactor {
+  code: String
+  jobs(filter: JobFilter): [Job]
+  key: ID
+  name: String
+  orderJobs(filter: OrderJobFilter): [OrderJob]
+  priorities(filter: PriorityFilter): [Priority]
+}
+
+input PriceFactorFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type Priority {
+  code: String
+  completionFollowUpCode: String
+  dead: String
+  defects(filter: DefectFilter): [Defect]
+  deviceDataKeyKey: Decimal
+  jobs(filter: JobFilter): [Job]
+  jobStatus(filter: JobStatusFilter): JobStatus
+  key: ID
+  maintenanceRegimes(filter: MaintenanceRegimeFilter): [MaintenanceRegime]
+  maximumValue: Decimal
+  minimumValue: Decimal
+  name: String
+  nominalValue: Decimal
+  notes: String
+  orderGroupType: String
+  priceFactor(filter: PriceFactorFilter): PriceFactor
+  priceFactorCode: String
+  raiseJob: String
+  rankingOrder: Decimal
+  statusCode: String
+  urgency: String
+}
+
+input PriorityFilter {
+  code: StringFilter
+  name: StringFilter
+  statusCode: StringFilter
+  priceFactorCode: StringFilter
+  completionFollowUpCode: StringFilter
+  rankingOrder: DecimalFilter
+  orderGroupType: StringFilter
+  raiseJob: StringFilter
+  deviceDataKeyKey: DecimalFilter
+  urgency: StringFilter
+  dead: StringFilter
+  notes: StringFilter
+  minimumValue: DecimalFilter
+  maximumValue: DecimalFilter
+  nominalValue: DecimalFilter
+}
+
+type Reinstatement {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+}
+
+input ReinstatementFilter {
+  code: StringFilter
+  name: StringFilter
+  externalReference: StringFilter
+}
+
+type ReportCategory {
+  displayOrder: Decimal
+  key: Decimal
+  name: String
+  notes: String
+}
+
+input ReportCategoryFilter {
+  key: DecimalFilter
+  name: StringFilter
+  notes: StringFilter
+  displayOrder: DecimalFilter
+}
+
+type Root {
+  actionOfficers(filter: ActionOfficerFilter): [ActionOfficer]
+  activityClasses(filter: ActivityClassFilter): [ActivityClass]
+  agreementTypes(filter: AgreementTypeFilter): [AgreementType]
+  areas(filter: AreaFilter): [Area]
+  assetControls(filter: AssetControlFilter): [AssetControl]
+  assetFunctions(filter: AssetFunctionFilter): [AssetFunction]
+  assetGroups(filter: AssetGroupFilter): [AssetGroup]
+  attributeTypes(filter: AttributeTypeFilter): [AttributeType]
+  attributeValues(filter: AttributeValueFilter): [AttributeValue]
+  categories(filter: CategoryFilter): [Category]
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  classifications(filter: ClassificationFilter): [Classification]
+  constructionMethods(filter: ConstructionMethodFilter): [ConstructionMethod]
+  contacts(filter: ContactFilter): [Contact]
+  contractAreas(filter: ContractAreaFilter): [ContractArea]
+  contractorContacts(filter: ContractorContactFilter): [ContractorContact]
+  contractors(filter: ContractorFilter): [Contractor]
+  contracts(filter: ContractFilter): [Contract]
+  coordinateTolerances(filter: CoordinateToleranceFilter): [CoordinateTolerance]
+  correspondenceTypes(filter: CorrespondenceTypeFilter): [CorrespondenceType]
+  costCodeCategories(filter: CostCodeCategoryFilter): [CostCodeCategory]
+  counties(filter: CountyFilter): [County]
+  customers(filter: CustomerFilter): [Customer]
+  customerTypes(filter: CustomerTypeFilter): [CustomerType]
+  dataSecurityKeys(filter: DataSecurityKeyFilter): [DataSecurityKey]
+  dateTypes(filter: DateTypeFilter): [DateType]
+  defects(filter: DefectFilter): [Defect]
+  defectTypes(filter: DefectTypeFilter): [DefectType]
+  designationPeriods(filter: DesignationPeriodFilter): [DesignationPeriod]
+  designations(filter: DesignationFilter): [Designation]
+  enquiryClassifications(filter: EnquiryClassificationFilter): [EnquiryClassification]
+  enquiryCustomerLinks(filter: EnquiryCustomerLinkFilter): [EnquiryCustomerLink]
+  enquiryCustomers(filter: EnquiryCustomerFilter): [EnquiryCustomer]
+  enquiryLinks(filter: EnquiryLinkFilter): [EnquiryLink]
+  enquiryMethods(filter: EnquiryMethodFilter): [EnquiryMethod]
+  enquiryStatuses(filter: EnquiryStatusFilter): [EnquiryStatus]
+  enquiryStatusLogs(filter: EnquiryStatusLogFilter): [EnquiryStatusLog]
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  excavationTypes(filter: ExcavationTypeFilter): [ExcavationType]
+  externalSystems(filter: ExternalSystemFilter): [ExternalSystem]
+  failureSeverities(filter: FailureSeverityFilter): [FailureSeverity]
+  featureAttributes(filter: FeatureAttributeFilter): [FeatureAttribute]
+  featureConditions(filter: FeatureConditionFilter): [FeatureCondition]
+  featureDates(filter: FeatureDateFilter): [FeatureDate]
+  featureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+  featureMeasurements(filter: FeatureMeasurementFilter): [FeatureMeasurement]
+  features(filter: FeatureFilter): [Feature]
+  featureTypes(filter: FeatureTypeFilter): [FeatureType]
+  feeWorkCategories(filter: FeeWorkCategoryFilter): [FeeWorkCategory]
+  feeWorkTypes(filter: FeeWorkTypeFilter): [FeeWorkType]
+  hierarchyLevels(filter: HierarchyLevelFilter): [HierarchyLevel]
+  highwayDedications(filter: HighwayDedicationFilter): [HighwayDedication]
+  inspectionBatches(filter: InspectionBatchFilter): [InspectionBatch]
+  inspectionConditions(filter: InspectionConditionFilter): [InspectionCondition]
+  inspectionFeatures(filter: InspectionFeatureFilter): [InspectionFeature]
+  inspectionGroups(filter: InspectionGroupFilter): [InspectionGroup]
+  inspectionRoutes(filter: InspectionRouteFilter): [InspectionRoute]
+  inspectionTypes(filter: InspectionTypeFilter): [InspectionType]
+  interests(filter: InterestFilter): [Interest]
+  jobAttributes(filter: JobAttributeFilter): [JobAttribute]
+  jobItems(filter: JobItemFilter): [JobItem]
+  jobs(filter: JobFilter): [Job]
+  jobStatuses(filter: JobStatusFilter): [JobStatus]
+  jobStatusLogs(filter: JobStatusLogFilter): [JobStatusLog]
+  jobTypes(filter: JobTypeFilter): [JobType]
+  labourTypes(filter: LabourTypeFilter): [LabourType]
+  localities(filter: LocalityFilter): [Locality]
+  maintenanceRegimes(filter: MaintenanceRegimeFilter): [MaintenanceRegime]
+  mapZooms(filter: MapZoomFilter): [MapZoom]
+  measurementTypes(filter: MeasurementTypeFilter): [MeasurementType]
+  nodes(filter: NodeFilter): [Node]
+  observationImpacts(filter: ObservationImpactFilter): [ObservationImpact]
+  observationParameterOptions(filter: ObservationParameterOptionFilter): [ObservationParameterOption]
+  observationParameters(filter: ObservationParameterFilter): [ObservationParameter]
+  observationTypes(filter: ObservationTypeFilter): [ObservationType]
+  operationalAttributeTypes(filter: OperationalAttributeTypeFilter): [OperationalAttributeType]
+  operationalAttributeValues(filter: OperationalAttributeValueFilter): [OperationalAttributeValue]
+  orderHeaders(filter: OrderHeaderFilter): [OrderHeader]
+  orderItems(filter: OrderItemFilter): [OrderItem]
+  orderJobs(filter: OrderJobFilter): [OrderJob]
+  organisationGroups(filter: OrganisationGroupFilter): [OrganisationGroup]
+  overheadTypes(filter: OverheadTypeFilter): [OverheadType]
+  paymentRequestClassifications(filter: PaymentRequestClassificationFilter): [PaymentRequestClassification]
+  periods(filter: PeriodFilter): [Period]
+  permitConditionTypes(filter: PermitConditionTypeFilter): [PermitConditionType]
+  pointsOfContact(filter: PointOfContactFilter): [PointOfContact]
+  politicalTendencies(filter: PoliticalTendencyFilter): [PoliticalTendency]
+  positions(filter: PositionFilter): [Position]
+  priceFactors(filter: PriceFactorFilter): [PriceFactor]
+  priorities(filter: PriorityFilter): [Priority]
+  reinstatements(filter: ReinstatementFilter): [Reinstatement]
+  reportCategories(filter: ReportCategoryFilter): [ReportCategory]
+  sampleGroups(filter: SampleGroupFilter): [SampleGroup]
+  siteGroups(filter: SiteGroupFilter): [SiteGroup]
+  sites(filter: SiteFilter): [Site]
+  siteStatuses(filter: SiteStatusFilter): [SiteStatus]
+  sorItems(filter: SorItemFilter): [SorItem]
+  states(filter: StateFilter): [State]
+  streetRecordTypes(filter: StreetRecordTypeFilter): [StreetRecordType]
+  subjectCategories(filter: SubjectCategoryFilter): [SubjectCategory]
+  surfaces(filter: SurfaceFilter): [Surface]
+  towns(filter: TownFilter): [Town]
+  typeOfServices(filter: TypeOfServiceFilter): [TypeOfService]
+  unitsOfMeasure(filter: UnitOfMeasureFilter): [UnitOfMeasure]
+  users(filter: UserFilter): [User]
+  valuers(filter: ValuerFilter): [Valuer]
+  wards(filter: WardFilter): [Ward]
+  workCategories(filter: WorkCategoryFilter): [WorkCategory]
+}
+
+type SampleGroup {
+  code: String
+  key: ID
+  name: String
+  percentage: Decimal
+}
+
+input SampleGroupFilter {
+  code: StringFilter
+  name: StringFilter
+  percentage: DecimalFilter
+}
+
+type Site {
+  allowSiteRates: String
+  centralSite(filter: CentralSiteFilter): CentralSite
+  classification(filter: ClassificationFilter): Classification
+  classificationCode: String
+  code: String
+  contractArea(filter: ContractAreaFilter): ContractArea
+  contractAreaCode: String
+  costCodeCode: String
+  customer(filter: CustomerFilter): Customer
+  customerCode: String
+  documents(filter: CentralDocumentLinkFilter): [CentralDocumentLink]
+  enquiries(filter: EnquiryLinkFilter): [EnquiryLink]
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  notes: String
+  planNumber: String
+}
+
+input SiteFilter {
+  code: StringFilter
+  classificationCode: StringFilter
+  planNumber: StringFilter
+  contractAreaCode: StringFilter
+  customerCode: StringFilter
+  costCodeCode: StringFilter
+  notes: StringFilter
+  allowSiteRates: StringFilter
+}
+
+type SiteGroup {
+  displayOrder: Decimal
+  featureGroups(filter: FeatureGroupFilter): [FeatureGroup]
+  key: Decimal
+  name: String
+  notes: String
+}
+
+input SiteGroupFilter {
+  key: DecimalFilter
+  name: StringFilter
+  notes: StringFilter
+  displayOrder: DecimalFilter
+}
+
+type SiteStatus {
+  code: String
+  externalReference: String
+  key: ID
+  name: String
+  remedial: Boolean
+  resetGuaranteePeriod: Boolean
+  sequence: Decimal
+  statusFlag: String
+}
+
+input SiteStatusFilter {
+  code: StringFilter
+  name: StringFilter
+  statusFlag: StringFilter
+  remedial: StringFilter
+  sequence: DecimalFilter
+  resetGuaranteePeriod: StringFilter
+  externalReference: StringFilter
+}
+
+type SorItem {
+  administrationFees: String
+  annualPerformance: String
+  code: String
+  contingency: String
+  dead: String
+  description: String
+  estimatedQuantity: Decimal
+  excludeJob: String
+  followUpCode: String
+  jobItems(filter: JobItemFilter): [JobItem]
+  key: ID
+  name: String
+  nonPayment: String
+  orderItems(filter: OrderItemFilter): [OrderItem]
+  parentSorItem: String
+  paymentCategoryCode: String
+  percentageItemAdjustment: String
+  price: Decimal
+  quantityFrom: Decimal
+  quantityTo: Decimal
+  sorScheduleCode: String
+  specificationReference: String
+  targetRate: Decimal
+  type: String
+  unitOfMeasure(filter: UnitOfMeasureFilter): UnitOfMeasure
+  unitOfMeasureCode: String
+}
+
+input SorItemFilter {
+  code: StringFilter
+  name: StringFilter
+  description: StringFilter
+  sorScheduleCode: StringFilter
+  unitOfMeasureCode: StringFilter
+  estimatedQuantity: DecimalFilter
+  dead: StringFilter
+  targetRate: DecimalFilter
+  price: DecimalFilter
+  annualPerformance: StringFilter
+  nonPayment: StringFilter
+  followUpCode: StringFilter
+  specificationReference: StringFilter
+  contingency: StringFilter
+  type: StringFilter
+  administrationFees: StringFilter
+  paymentCategoryCode: StringFilter
+  quantityFrom: DecimalFilter
+  quantityTo: DecimalFilter
+  parentSorItem: StringFilter
+  percentageItemAdjustment: StringFilter
+  excludeJob: StringFilter
+}
+
+input SpatialFilter {
+  intersects: String
+}
+
+type State {
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  code: String
+  description: String
+  externalReference: String
+  key: ID
+}
+
+input StateFilter {
+  code: StringFilter
+  description: StringFilter
+  externalReference: StringFilter
+}
+
+type StreetRecordType {
+  applicableToDefects: Boolean
+  applicableToFeatures: Boolean
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  externalReference: String
+  includeInNsgExport: Boolean
+  key: ID
+  name: String
+  notApplicableToStreetWorks: Boolean
+  streetTypeCode: Decimal
+}
+
+input StreetRecordTypeFilter {
+  streetTypeCode: DecimalFilter
+  name: StringFilter
+  applicableToFeatures: StringFilter
+  notApplicableToStreetWorks: StringFilter
+  applicableToDefects: StringFilter
+  includeInNsgExport: StringFilter
+  externalReference: StringFilter
+}
+
+input StringFilter {
+  equals: String
+  contains: String
+  hasValue: Boolean
+}
+
+type SubjectCategory {
+  code: String
+  description: String
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  key: ID
+  notes: String
+}
+
+input SubjectCategoryFilter {
+  code: StringFilter
+  description: StringFilter
+  notes: StringFilter
+}
+
+type Surface {
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  code: String
+  description: String
+  externalReference: String
+  key: ID
+}
+
+input SurfaceFilter {
+  code: StringFilter
+  description: StringFilter
+  externalReference: StringFilter
+}
+
+type Town {
+  county(filter: CountyFilter): County
+  countyId: Decimal
+  id: Decimal
+  key: ID
+  localities(filter: LocalityFilter): [Locality]
+  name: String
+}
+
+input TownFilter {
+  id: DecimalFilter
+  name: StringFilter
+  countyId: DecimalFilter
+}
+
+type TypeOfService {
+  assetTypeId: String
+  code: String
+  dead: String
+  description: String
+  enquirySubjects(filter: EnquirySubjectFilter): [EnquirySubject]
+  key: ID
+}
+
+input TypeOfServiceFilter {
+  code: StringFilter
+  description: StringFilter
+  assetTypeId: StringFilter
+  dead: StringFilter
+}
+
+type UnitOfMeasure {
+  attributeTypes(filter: AttributeTypeFilter): [AttributeType]
+  code: String
+  description: String
+  hasDepth: Boolean
+  hasLength: Boolean
+  hasWidth: Boolean
+  key: ID
+  measurementTypes(filter: MeasurementTypeFilter): [MeasurementType]
+  observationParameters(filter: ObservationParameterFilter): [ObservationParameter]
+  rateUplift: Boolean
+  sorItems(filter: SorItemFilter): [SorItem]
+}
+
+input UnitOfMeasureFilter {
+  code: StringFilter
+  description: StringFilter
+  rateUplift: StringFilter
+  hasLength: StringFilter
+  hasWidth: StringFilter
+  hasDepth: StringFilter
+}
+
+type User {
+  actionOfficers(filter: ActionOfficerFilter): [ActionOfficer]
+  apiKey: String
+  assignDataKeyManually: String
+  centralDocuments(filter: CentralDocumentLinkFilter): [CentralDocumentLink]
+  centralEnquiries(filter: CentralEnquiryFilter): [CentralEnquiry]
+  dataSecurityGroupKey: Decimal
+  defaultDataKey(filter: DataSecurityKeyFilter): DataSecurityKey
+  defaultDataKeyKey: Decimal
+  deviceProfileCode: String
+  documents(filter: DocumentLinkFilter): [DocumentLink]
+  email: String
+  enquiryCustomers(filter: EnquiryCustomerFilter): [EnquiryCustomer]
+  enquiryStatusLogs(filter: EnquiryStatusLogFilter): [EnquiryStatusLog]
+  featureDocuments(filter: FeatureDocumentFilter): [FeatureDocument]
+  features(filter: FeatureFilter): [Feature]
+  firstName: String
+  groupCode: String
+  inactive: String
+  inspectionBatches(filter: InspectionBatchFilter): [InspectionBatch]
+  jobStatusLogs(filter: JobStatusLogFilter): [JobStatusLog]
+  key: ID
+  lastPasswordTime: DateTime
+  licenceNumber: String
+  loginFailCount: Decimal
+  loginName: String
+  maximumNumberOfUserLicences: Decimal
+  messagePreference: String
+  orderHeaders(filter: OrderHeaderFilter): [OrderHeader]
+  passwordNeverExpires: String
+  surname: String
+  userId: String
+  userLockout: String
+  workGroupCode: String
+}
+
+input UserFilter {
+  firstName: StringFilter
+  surname: StringFilter
+  loginName: StringFilter
+  groupCode: StringFilter
+  workGroupCode: StringFilter
+  email: StringFilter
+  passwordNeverExpires: StringFilter
+  userLockout: StringFilter
+  loginFailCount: DecimalFilter
+  maximumNumberOfUserLicences: DecimalFilter
+  lastPasswordTime: DateTimeFilter
+  defaultDataKeyKey: DecimalFilter
+  assignDataKeyManually: StringFilter
+  dataSecurityGroupKey: DecimalFilter
+  userId: StringFilter
+  messagePreference: StringFilter
+  inactive: StringFilter
+  deviceProfileCode: StringFilter
+  licenceNumber: StringFilter
+  apiKey: StringFilter
+}
+
+type Valuer {
+  code: String
+  key: ID
+  name: String
+}
+
+input ValuerFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+type Ward {
+  centralSites(filter: CentralSiteFilter): [CentralSite]
+  code: String
+  features(filter: FeatureFilter): [Feature]
+  key: ID
+  name: String
+}
+
+input WardFilter {
+  code: StringFilter
+  name: StringFilter
+}
+
+scalar WKT
+
+type WorkCategory {
+  code: String
+  contracts(filter: ContractFilter): [Contract]
+  key: ID
+  name: String
+}
+
+input WorkCategoryFilter {
+  code: StringFilter
+  name: StringFilter
+}
+

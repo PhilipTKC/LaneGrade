@@ -1,0 +1,17 @@
+<div
+    id="map"
+    class="w-96 h-96"
+>
+</div>
+
+<div class="justify-evenly flex p-8">
+    <label repeat.for="map of mapIds">
+        <input
+            type="radio"
+            name="mapIds"
+            model.bind="map.value"
+            checked.bind="selectedMapId"
+        >
+        ${map.name}
+    </label>
+</div>

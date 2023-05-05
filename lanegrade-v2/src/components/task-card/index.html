@@ -1,0 +1,49 @@
+<div
+    class="hover:bg-gray-50 focus:outline-none relative w-full p-4 my-2 bg-white rounded shadow-md outline-none"
+    repeat.for="task of tasks"
+>
+    <div
+        if.bind="task._id"
+        class="md:flex justify-between"
+    >
+        <h1 class="p-2 text-xl font-bold text-center text-gray-500 uppercase truncate">
+            ${task.name}
+        </h1>
+
+        <div class="justify-end select-none">
+            <a
+                load="/tasks/${task._id}/review"
+                class="hover:text-indigo-500 md:text-black focus:outline-none text-sm text-white"
+            >
+                <button
+                    class="md:w-32 md:mr-1 hover:bg-opacity-75 md:bg-transparent focus:outline-none w-full px-2 py-2 my-1 bg-indigo-500 rounded"
+                >
+                    Review
+                </button>
+            </a>
+            <a
+                load="/tasks/${task._id}/dashboard?page=0&filter=all"
+                class="hover:text-indigo-500 focus:outline-none"
+            >
+                <button class="md:w-32 md:ml-1 focus:outline-none w-full px-2 py-2 my-1 text-sm rounded">
+                    Dashboard
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div
+        if.bind="!task._id"
+        class=" absolute top-0 bottom-0 left-0 right-0 flex justify-center h-full mx-auto"
+    >
+        <div class="m-auto">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+    </div>
+</div>
+<div
+    if.bind="!tasks"
+    class="container flex items-center justify-center w-full py-20 mx-auto"
+>
+    <i class="fad fa-circle-notch fa-spin"></i>
+</div>

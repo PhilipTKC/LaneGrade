@@ -1,0 +1,23 @@
+<nav class="w-full p-4 mx-auto shadow-lg">
+    <div class="md:flex container w-full mx-auto">
+        <a
+            load="overview"
+            class="md:my-0 flex px-3 py-2 my-1 text-sm font-medium text-gray-400 rounded"
+        >
+            Overview
+        </a>
+        <a
+            load="members"
+            class="md:my-0 flex px-3 py-2 my-1 text-sm font-medium text-gray-400 rounded"
+        >
+            Members
+        </a>
+        <a
+            if.bind="createdBy === userId"
+            load="settings"
+            class="md:my-0 flex px-3 py-2 my-1 text-sm font-medium text-gray-400 rounded-md"
+        >
+            Settings
+        </a>
+    </div>
+</nav>

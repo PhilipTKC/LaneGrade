@@ -1,0 +1,31 @@
+<div
+    class="md:mt-0 justify-evenly md:w-60 flex items-center w-full mt-2 bg-white rounded shadow-md"
+    if.bind="!isLoading"
+>
+    <button
+        class="px-2 py-1 outline-none"
+        click.delegate="previousPage()"
+    >
+        <i class="fad fa-angle-left"></i>
+    </button>
+    <div class="w-48 text-center">
+        <p>
+            ${pageNumber} / ${numberOfPages}
+        </p>
+        <p show.bind="isLoading">
+            <i class="fad fa-circle-notch fa-spin"></i>
+        </p>
+    </div>
+    <button
+        class="px-2 py-1 outline-none"
+        click.delegate="nextPage()"
+    >
+        <i class="fad fa-angle-right"></i>
+    </button>
+</div>
+<div
+    else
+    class="md:w-60 flex items-center justify-center w-full px-2 py-1 text-center"
+>
+    <i class="fad fa-circle-notch fa-spin"></i>
+</div>

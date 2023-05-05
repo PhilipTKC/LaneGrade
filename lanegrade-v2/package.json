@@ -1,0 +1,113 @@
+{
+  "name": "lanegrade-v2",
+  "description": "Road Defect Auditing Web Application",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "???"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@apollo/client": "^3.4.15",
+    "@aurelia/kernel": "2.0.0-alpha.23",
+    "@aurelia/router": "^2.0.0-alpha.23",
+    "@aurelia/runtime": "^2.0.0-alpha.23",
+    "@aurelia/runtime-html": "^2.0.0-alpha.23",
+    "@aurelia/store-v1": "2.0.0-alpha.23",
+    "@aurelia/validation": "2.0.0-alpha.23",
+    "@aurelia/validation-html": "2.0.0-alpha.23",
+    "@googlemaps/js-api-loader": "^1.12.5",
+    "@terraformer/wkt": "^2.0.7",
+    "@uppy/core": "^2.1.1",
+    "@uppy/drag-drop": "^2.0.4",
+    "apollo-link-batch-http": "^1.2.14",
+    "aurelia": "2.0.0-alpha.23",
+    "aurelia-direct-router": "^2.0.0-alpha.21.0",
+    "aurelia-v2-virtual-repeat": "^0.1.3",
+    "firebase": "^9.1.1",
+    "graphql": "^15.6.0",
+    "graphql-tag": "^2.12.5",
+    "immer": "^9.0.6",
+    "micromodal": "^0.4.6",
+    "nanoid": "^3.1.28",
+    "nprogress": "^0.2.0",
+    "papaparse": "^5.3.1",
+    "rxjs": "^7.3.1",
+    "simplebar": "^5.3.6",
+    "tailwindcss": "^2.2.16",
+    "tippy.js": "^6.3.2",
+    "toastify-js": "^1.11.1"
+  },
+  "devDependencies": {
+    "@aurelia/testing": "latest",
+    "@aurelia/ts-jest": "latest",
+    "@aurelia/webpack-loader": "latest",
+    "@swc/core": "^1.2.95",
+    "@types/googlemaps": "^3.43.3",
+    "@types/jest": "^26.0.23",
+    "@types/micromodal": "^0.3.3",
+    "@types/node": "^15.12.4",
+    "@types/nprogress": "^0.2.0",
+    "@types/papaparse": "^5.2.6",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "autoprefixer": "^10.2.6",
+    "compression-webpack-plugin": "^9.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^5.2.6",
+    "esbuild": "^0.13.4",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "htmlhint": "^0.15.1",
+    "jest": "^27.0.4",
+    "jest-transform-stub": "^2.0.0",
+    "postcss": "^8.3.5",
+    "postcss-loader": "^6.1.0",
+    "rimraf": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.2.4",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.4",
+    "uglify-js": "^3.14.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.39.1",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "analyze": "rimraf dist && webpack --env production --analyze",
+    "build": "rimraf dist && webpack --env production",
+    "build:css": "npx tailwindcss-cli@latest -c ./tailwind.config.js -i src/css/tailwind.css -o src/css/theme.css",
+    "lint": "npm run lint:js && npm run lint:html",
+    "lint:html": "htmlhint -c .htmlhintrc src",
+    "lint:js": "eslint src test --ext .js,.ts",
+    "pretest": "npm run lint",
+    "start": "webpack serve",
+    "test": "jest",
+    "watch:css": "TAILWIND_MODE=watch npx tailwindcss-cli@latest -i src/css/tailwind.css -o src/css/theme.css --watch"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "\\.(css|less|sass|scss|styl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
+      "\\.(ts|html)$": "@aurelia/ts-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.d.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    }
+  }
+}

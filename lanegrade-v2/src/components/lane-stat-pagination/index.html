@@ -1,0 +1,17 @@
+<div class="mt-8 mb-4">
+    <div class="md:flex justify-between w-full">
+        <button
+            click.delegate="previousChunk()"
+            class="md:w-24 hover:bg-opacity-75 block w-full px-2 py-1 text-white bg-gray-700 rounded"
+        >
+            Previous
+        </button>
+        <div class="md:my-0 my-2 text-center">${currentPage} of ${chunkLength - 1}</div>
+        <button
+            click.delegate="nextChunk()"
+            class="md:w-24 hover:bg-opacity-75 block w-full px-2 py-1 text-white bg-gray-700 rounded"
+        >
+            Next
+        </button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="flex-col w-full mx-auto">
+    <div class="flex items-center px-4 py-1 mx-auto bg-white shadow-md">
+        <span class="px-2 py-1 font-black text-white uppercase bg-indigo-600 rounded shadow-md select-none">
+            Tasks
+        </span>
+        <input
+            autocomplete="false"
+            class="focus:outline-none flex w-full p-4"
+            spellcheck="false"
+            type="text"
+            value.bind="query & debounce:500"
+        />
+        <span class="${!isSearching ? 'inline-block' : 'hidden'}">
+            <i class="fad fa-search"></i>
+        </span>
+        <span class="${isSearching ? 'inline-block' : 'hidden'}">
+            <i class="fad fa-circle-notch fa-spin"></i>
+        </span>
+    </div>
+</div>

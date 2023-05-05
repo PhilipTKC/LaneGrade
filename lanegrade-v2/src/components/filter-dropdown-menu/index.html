@@ -1,0 +1,23 @@
+<div
+    if.bind="!isLoading"
+    class="md:max-w-60 w-full"
+>
+    <select
+        class="focus:outline-none md:w-60 block w-full px-2 py-1 bg-white rounded shadow-md"
+        value.bind="selectedFilterValue"
+    >
+        <option
+            repeat.for="filter of filters"
+            model.bind="filter.value"
+            class="w-60 ${selectedFilterValue === filter.value ? 'font-bold' : ''}"
+        >
+            ${filter.name}
+        </option>
+    </select>
+</div>
+<div
+    else
+    class="md:w-60 md:mx-2 w-full py-1 text-center"
+>
+    <i class="fad fa-circle-notch fa-spin"></i>
+</div>

@@ -1,0 +1,20 @@
+<div class="md:grid-cols-3 grid gap-4">
+    <div
+        repeat.for="member of members"
+        class="flex items-center w-full p-8 my-2 rounded shadow-lg ${member._id === createdBy ? 'bg-gray-50': 'bg-white'}"
+    >
+        <div class="w-full">
+            <div class="flex w-full my-2 select-none">
+                <h1 class="w-full px-2 py-1 text-white bg-indigo-500 rounded">
+                    ${member._id === createdBy ? 'Creator' : 'User'}
+                </h1>
+            </div>
+            <div>
+                <h1 class="text-true-gray-600 text-2xl font-bold">
+                    ${member.name}
+                </h1>
+            </div>
+            <p class="text-true-gray-400 text-sm">${member.email}</p>
+        </div>
+    </div>
+</div>

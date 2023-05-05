@@ -1,0 +1,168 @@
+<div class="flex justify-between w-full h-20 p-6 mx-auto shadow-lg">
+    <a
+        class="hover:bg-opacity-75 transition-all duration-300 ease-in-out bg-indigo-500 rounded"
+        load="../"
+    >
+        <div class="w-full px-2 py-1 text-center text-gray-100">
+            Back
+        </div>
+    </a>
+    <a
+        class="hover:bg-opacity-75 transition-all duration-300 ease-in-out bg-indigo-500 rounded"
+        load="/tasks/${taskId}/review"
+    >
+        <div class="w-full px-2 py-1 text-center text-gray-100">
+            Review Task
+        </div>
+    </a>
+</div>
+
+<div class="container p-8 mx-auto">
+
+    <div class="flex justify-end w-full my-2">
+        <button
+            class="md:w-32 w-full px-2 py-1 text-white bg-red-400 rounded"
+            click.delegate="deleteTask()"
+        >
+            Delete Task?
+        </button>
+    </div>
+
+    <div class="mx-auto">
+        <div class="w-full">
+            <div>
+                <h1 class="md:text-2xl my-2 text-2xl font-bold tracking-wide text-center text-gray-700">
+                    Task Dashboard
+                </h1>
+                <h2 class="my-1 text-center">${task.name}</h2>
+            </div>
+            <task-overview
+                total-frames.bind="totalFrames"
+                total-reviewed.bind="totalReviewed"
+                total-accepted.bind="totalAccepted"
+                total-rejected.bind="totalRejected"
+                is-loading.bind="isLoading"
+            ></task-overview>
+
+            <div>
+                <h2 class="text-md font-bold tracking-wide">Review Progress</h2>
+            </div>
+            <div class="mt-4 mb-4">
+                <div
+                    class="justify-items-center relative flex items-center w-full h-8 my-2 overflow-hidden text-center text-white rounded ${isLoading ? 'loading' : 'bg-indigo-400'}">
+                    <p class="absolute left-0 right-0 text-sm text-center select-none">
+                        <span if.bind="!isLoading">
+                            ${totalReviewed} / ${totalFrames}
+                        </span>
+                        <span else>
+                            <i class="fad fa-circle-notch fa-spin"></i>
+                        </span>
+                    </p>
+                    <div
+                        class="h-full text-center ${completedPercentage === 100 ? 'bg-green-400' : 'bg-indigo-700'} rounded shadow-md"
+                        css="width: ${completedPercentage}%"
+                    >
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex w-full my-1">
+                    <button
+                        class="hover:bg-opacity-75 w-full px-2 py-2 text-white bg-gray-700 rounded shadow-md"
+                        click.delegate="exportFrames()"
+                        if.bind="!isLoading"
+                    >
+                        Export to CSV
+                    </button>
+                </div>
+            </div>
+
+            <lane-stat-pagination
+                previous-chunk.call="previousChunk()"
+                next-chunk.call="nextChunk()"
+                current-page.bind="chunkPage"
+                chunk-length.bind="chunks.length"
+            >
+            </lane-stat-pagination>
+
+            <div class="md:flex justify-center">
+                <label
+                    repeat.for="filter of filters"
+                    class="md:mx-2 block mx-0 cursor-pointer"
+                >
+                    <input
+                        type="radio"
+                        name="sort"
+                        model.bind="filter.value"
+                        checked.bind="selectedFilter"
+                    >
+                    <span class="md:ml-2 text-sm font-bold tracking-wide">${filter.name}</span>
+                </label>
+            </div>
+
+            <div
+                class="sm:rounded-md my-4 overflow-hidden transition duration-1000 ease-in-out shadow ${isLoading ? 'opacity-0' : 'opacity-100'}">
+                <ul>
+                    <li repeat.for="lane of chunks[chunkPage]">
+                        <a
+                            load="/tasks/${lane.taskId._id}/review/${lane._id}/all/1/0"
+                            class="focus:outline-none hover:bg-indigo-100 hover:shadow-md block transition duration-500 ease-in-out"
+                        >
+                            <div class="sm:px-6 flex items-center px-4 py-4">
+                                <div class="flex items-center justify-center flex-1">
+                                    <div class="md:grid md:grid-cols-2 md:gap-4 flex-1 px-4">
+                                        <div>
+                                            <div
+                                                class="md:text-lg md:text-left text-sm leading-5 tracking-wide text-center truncate">
+                                                ${lane.name}</div>
+                                            <div class="md:text-sm mt-2 leading-5">
+                                                <div class="flex justify-center">
+                                                    <span class="flex items-center mr-1">
+                                                        <i class="fad fa-check mr-2 text-green-400"></i>
+                                                        ${lane.accepted.length}
+                                                    </span>
+                                                    <span class="flex items-center mx-1">
+                                                        <i class="fad fa-times mr-2 text-red-400"></i>
+                                                        ${lane.rejected.length}
+                                                    </span>
+                                                    <span class="flex items-center mx-1">
+                                                        <i class="fad fa-question-circle mr-2"></i>
+                                                        ${lane.reviewed.length - lane.accepted.length -
+                                                        lane.rejected.length}
+                                                    </span>
+                                                </div>
+                                                <div class="my-2">
+                                                    <div
+                                                        class="justify-items-center relative flex items-center w-full h-6 my-2 overflow-hidden text-center bg-indigo-400 rounded">
+                                                        <p
+                                                            class="absolute left-0 right-0 text-xs text-center text-white select-none">
+                                                            ${lane.reviewed.length} / ${lane.quantity}
+                                                        </p>
+                                                        <div
+                                                            class="h-full text-center ${lane.reviewed.length === lane.quantity ? 'bg-green-500' : 'bg-indigo-700'} shadow-md"
+                                                            css="width: ${(lane.reviewed.length / lane.quantity) * 100}%"
+                                                        >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div><i class="md:text-lg far fa-chevron-right"></i></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div
+                    if.bind="chunks.length === 0"
+                    class="bg-red-50 p-8 text-center"
+                >
+                    Filter did not return any results
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

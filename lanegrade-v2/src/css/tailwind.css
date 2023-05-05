@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+
+body[class*="modal-open"] div.blur {
+    @apply absolute;
+    @apply bg-black;
+    @apply bottom-0;
+    @apply left-0;
+    @apply opacity-75;
+    @apply right-0;
+    @apply top-0;
+    @apply z-20;
+  }
+
+body[class*="modal-open"] div.viewport {
+    -moz-filter: blur(5px);
+    -ms-filter: blur(5px);
+    -o-filter: blur(5px);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.active {
+  @apply text-indigo-500  !important;
+}
+
+@tailwind utilities;

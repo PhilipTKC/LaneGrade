@@ -1,0 +1,29 @@
+.modal {
+  @apply -top-full;
+  @apply absolute;
+  @apply opacity-0;
+  @apply p-2;
+  @apply z-50;
+}
+
+div[class*="is-open"] {
+  @apply -translate-y-16;
+  @apply absolute;
+  @apply bg-white;
+  @apply bottom-0;
+  @apply duration-500;
+  @apply ease-in-out;
+  @apply flex;
+  @apply h-48;
+  @apply left-0;
+  @apply m-auto;
+  @apply max-w-2xl;
+  @apply opacity-100;
+  @apply p-4;
+  @apply right-0;
+  @apply shadow-lg;
+  @apply top-0;
+  @apply transform;
+  @apply transition;
+  @apply z-50;
+}

@@ -1,0 +1,84 @@
+<!-- <div class="md:flex p-4 my-8 bg-white rounded shadow-lg">
+    <div class="md:h-48 flex flex-col items-center justify-center w-full p-2 rounded-l-lg">
+        <div if.bind="!isLoading">${totalReviewed} / ${totalFrames}</div>
+        <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        <div>
+            <p class="text-gray-700">Reviewed</p>
+        </div>
+    </div>
+    <div class="md:h-48 md:border-l-2 md:border-r flex flex-col items-center justify-center w-full p-2 border-gray-100">
+        <div if.bind="!isLoading">${totalAccepted}</div>
+        <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        <div>
+            <p class="text-green-400">Accepted</p>
+        </div>
+    </div>
+    <div class="md:h-48 md:border-l md:border-r-2 flex flex-col items-center justify-center w-full p-2 border-gray-100">
+        <div if.bind="!isLoading">${totalRejected}</div>
+        <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        <div>
+            <p class="text-red-400">Rejected</p>
+        </div>
+    </div>
+    <div class="md:h-48 flex flex-col items-center justify-center w-full p-2 rounded-r-lg">
+        <div if.bind="!isLoading">${totalReviewed - totalAccepted - totalRejected}</div>
+        <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        <div>
+            <p class="text-gray-400">Review</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="md:flex p-4 my-8 bg-white rounded shadow-lg">
+    <div class="flex justify-between w-full p-4 rounded-l-lg">
+        <div>
+            <div class="text-sm font-bold tracking-wide">Reviewed</div>
+            <div if.bind="!isLoading">
+                <h2 class="text-xl font-black">${totalReviewed} / ${totalFrames}</h2>
+            </div>
+            <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        </div>
+        <div class="flex items-center justify-center w-8 h-8 bg-yellow-400 rounded-full">
+            <i class="fad fa-star text-lg text-yellow-100"></i>
+        </div>
+    </div>
+
+    <div class="md:border-l-2 md:border-r flex justify-between w-full p-4 border-gray-100">
+        <div>
+            <div class="text-sm font-bold tracking-wide">Accepted</div>
+            <div if.bind="!isLoading">
+                <h2 class="text-xl font-black">${totalAccepted}</h2>
+            </div>
+            <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        </div>
+        <div class="flex items-center justify-center w-8 h-8 bg-green-400 rounded-full">
+            <i class="fad fa-check text-md text-green-100"></i>
+        </div>
+    </div>
+
+    <div class="md:border-l md:border-r-2 flex justify-between w-full p-4 border-gray-100">
+        <div>
+            <div class="text-sm font-bold tracking-wide">Rejected</div>
+            <div if.bind="!isLoading">
+                <h2 class="text-xl font-black">${totalRejected}</h2>
+            </div>
+            <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        </div>
+        <div class="flex items-center justify-center w-8 h-8 bg-red-400 rounded-full">
+            <i class="fad fa-times text-lg text-red-100"></i>
+        </div>
+    </div>
+
+    <div class="flex justify-between w-full p-4 rounded-r-lg">
+        <div>
+            <div class="text-sm font-bold tracking-wide">Review</div>
+            <div if.bind="!isLoading">
+                <h2 class="text-xl font-black">${totalReviewed - totalAccepted - totalRejected}</h2>
+            </div>
+            <div else><i class="fad fa-circle-notch fa-spin"></i></div>
+        </div>
+        <div class="flex items-center justify-center w-8 h-8 bg-blue-400 rounded-full">
+            <i class="fad fa-search text-lg text-blue-100"></i>
+        </div>
+    </div>
+</div>

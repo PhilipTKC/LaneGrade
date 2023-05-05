@@ -1,0 +1,250 @@
+<div class="md:h-20 absolute left-0 right-0 w-full h-48 p-6 mx-auto shadow-lg">
+    <div class="flex justify-between w-full">
+        <a
+            class="hover:bg-opacity-75 transition-all duration-300 ease-in-out bg-indigo-500 rounded"
+            load="../"
+        >
+            <div class="w-full px-2 py-1 text-center text-gray-100">
+                Back
+            </div>
+        </a>
+        <div class="flex-1">
+            <div class="md:flex justify-evenly items-center hidden w-full">
+                <lane-dropdown-menu
+                    if.bind="lanes && lanes.length > 0"
+                    lanes.bind="lanes"
+                    selected-lane-id.two-way="selectedLaneId"
+                    selected-filter.bind="selectedFilterValue"
+                >
+                </lane-dropdown-menu>
+
+                <filter-dropdown-menu
+                    task-id.bind="taskId"
+                    lane-id.bind="laneId"
+                    selected-filter-value.two-way="selectedFilterValue"
+                    is-loading.bind="configuration.isLoading"
+                >
+                </filter-dropdown-menu>
+
+                <frames-pagination
+                    previous-page.call="previousPage()"
+                    next-page.call="nextPage()"
+                    number-of-pages.bind="configuration.numberOfPages"
+                    page-number.bind="pageNumber"
+                    is-loading.bind="configuration.isLoading"
+                ></frames-pagination>
+            </div>
+        </div>
+        <a
+            class="hover:bg-opacity-75 transition-all duration-300 ease-in-out bg-indigo-500 rounded"
+            load="/tasks/${taskId}/dashboard?page=0&filter=all"
+        >
+            <div class="w-full px-2 py-1 text-center text-gray-100">
+                Dashboard
+            </div>
+        </a>
+    </div>
+    <div class="md:hidden flex w-full mt-2">
+        <div class="md:flex items-center w-full">
+            <lane-dropdown-menu
+                if.bind="lanes && lanes.length > 0"
+                lanes.bind="lanes"
+                selected-lane-id.two-way="selectedLaneId"
+                selected-filter.bind="selectedFilterValue"
+            >
+            </lane-dropdown-menu>
+
+            <filter-dropdown-menu
+                task-id.bind="taskId"
+                lane-id.bind="laneId"
+                selected-filter-value.two-way="selectedFilterValue"
+                is-loading.bind="configuration.isLoading"
+            >
+            </filter-dropdown-menu>
+
+            <frames-pagination
+                previous-page.call="previousPage()"
+                next-page.call="nextPage()"
+                number-of-pages.bind="configuration.numberOfPages"
+                page-number.bind="pageNumber"
+                is-loading.bind="configuration.isLoading"
+            ></frames-pagination>
+        </div>
+    </div>
+</div>
+
+<div class="flex w-full h-screen">
+    <div class="md:flex hidden mt-20 transform shadow-2xl">
+        <task-frames
+            active-index.two-way="activeIndex"
+            frames-found.bind="configuration.framesFound"
+            frames.bind="frames"
+            is-loading.bind="configuration.isLoading"
+            if.bind="frames.length > 0"
+        >
+        </task-frames>
+    </div>
+
+    <div class="md:mt-20 mt-44 container flex-1 w-full p-8 mx-auto">
+        <div if.bind="configuration.activeLane">
+            <div if.bind="frames && configuration.framesFound && !configuration.isLoading">
+                <glide
+                    image-url.bind="frames[activeIndex].imageUrl"
+                    is-loading-frames.bind="configuration.isLoading"
+                >
+                </glide>
+
+                <div class="lg:hidden flex w-full mx-auto mb-2 text-center">
+                    <div
+                        class="flex justify-between w-full mx-auto select-none"
+                        if.bind="!configuration.isLoading"
+                    >
+                        <div class="flex">
+                            <div class="inline-block mr-2"> ${frames[activeIndex].frameId} </div>
+                            <div if.bind="frames[activeIndex].accepted === true">
+                                <i class="fad fa-check inline-block text-green-400"></i>
+                            </div>
+                            <div if.bind="frames[activeIndex].accepted === false">
+                                <i class="fad fa-times inline-block text-red-400"></i>
+                            </div>
+                            <div
+                                if.bind="frames[activeIndex].accepted === undefined || frames[activeIndex].accepted === null && frames[activeIndex].reviewed">
+                                <i class="fad fa-question-circle inline-block"></i>
+                            </div>
+                        </div>
+                        <div>${activeIndex + 1} / ${frames.length}</div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="my-2">
+                    <div class="w-full">
+                        <label class="block">Defect Type</label>
+                        <input
+                            class="focus:outline-none w-full px-2 py-1 rounded shadow-md"
+                            value.bind="frames[activeIndex].defectType"
+                            type="text"
+                            spellcheck="false"
+                            autocomplete="false"
+                        />
+                    </div>
+
+                    <div class="justify-evenly flex my-2">
+                        <div class="w-full">
+                            <label class="block">Severity</label>
+                            <input
+                                class="focus:outline-none w-full px-2 py-1 rounded shadow-md"
+                                value.bind="frames[activeIndex].ciDefectSeverity | toNumber"
+                                spellcheck="false"
+                                autocomplete="false"
+                                type="number"
+                            />
+                        </div>
+
+                        <div class="w-full mx-2">
+                            <label class="block">Value</label>
+                            <input
+                                class="focus:outline-none w-full px-2 py-1 rounded shadow-md"
+                                value.bind="frames[activeIndex].strValue"
+                                type="text"
+                                spellcheck="false"
+                                autocomplete="false"
+                            />
+                        </div>
+
+                        <div class="w-full">
+                            <label class="block">Unit</label>
+                            <input
+                                class="focus:outline-none w-full px-2 py-1 rounded shadow-md"
+                                value.bind="frames[activeIndex].unitTitle"
+                                type="text"
+                                spellcheck="false"
+                                autocomplete="false"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:flex justify-between">
+                    <button
+                        class="lg:w-32 hover:bg-opacity-75 w-full px-2 py-1 my-2 text-white bg-blue-400 rounded"
+                        click.delegate="updateFrame('update')"
+                    >
+                        Update
+                    </button>
+                    <div class="flex">
+                        <button
+                            class="lg:w-16 hover:bg-opacity-75 w-full px-2 py-1 my-2 mr-1 text-white bg-blue-500 rounded"
+                            click.delegate="previousFrame()"
+                        >
+                            <i class="fad fa-angle-left"></i>
+                        </button>
+                        <button
+                            class="lg:w-16 hover:bg-opacity-75 w-full px-2 py-1 my-2 text-white bg-red-400 rounded"
+                            click.delegate="updateFrame('reject')"
+                        >
+                            <i class="fad fa-times"></i>
+                        </button>
+                        <button
+                            class="lg:w-16 hover:bg-opacity-75 w-full px-2 py-1 my-2 ml-1 mr-1 text-white bg-gray-400 rounded"
+                            click.delegate="updateFrame('review')"
+                        >
+                            <i class="fad fa-question-circle"></i>
+                        </button>
+                        <button
+                            class="lg:w-16 hover:bg-opacity-75 w-full px-2 py-1 my-2 mr-1 text-white bg-green-400 rounded"
+                            click.delegate="updateFrame('accept')"
+                        >
+                            <i class="fad fa-check"></i>
+                        </button>
+                        <button
+                            class="lg:w-16 hover:bg-opacity-75 w-full px-2 py-1 my-2 mr-1 text-white bg-blue-500 rounded"
+                            click.delegate="nextFrame()"
+                        >
+                            <i class="fad fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                else
+                class="loading p-8 rounded"
+            >
+            </div>
+        </div>
+    </div>
+
+    <div
+        if.bind="configuration.activeLane && frames && configuration.framesFound && !configuration.isLoading"
+        class="w-96 md:flex hidden mt-20 shadow-2xl"
+    >
+
+        <div>
+            <mapbox
+                frame.bind="frames[activeIndex]"
+                if.bind="frames[activeIndex]"
+            >
+            </mapbox>
+
+            <hr />
+
+            <div class="p-4">
+                <div class="my-4">
+                    <p class="px-2 py-1 my-1 text-white bg-gray-700 rounded select-none">Original Detected Defect</p>
+                    <p class="my-1">${frames[activeIndex].defectTypeOld}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div
+        else
+        class="w-96 flex items-center justify-center mt-20 shadow-2xl"
+    >
+        <div class="m-auto">
+            <i class="fad fa-circle-notch fa-spin"></i>
+        </div>
+    </div>
+</div>
+</div>

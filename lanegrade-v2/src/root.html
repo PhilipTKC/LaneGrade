@@ -1,0 +1,24 @@
+<delete-confirmation-modal></delete-confirmation-modal>
+
+<div class="blur"></div>
+
+<div
+  id="outer-viewport"
+  class="relative"
+>
+  <div class="bg-gray-50 viewport flex">
+    <div
+      class="fixed h-screen"
+      id="nav-view"
+    >
+      <side-navigation-menu></side-navigation-menu>
+    </div>
+    <div class="w-full min-h-screen overflow-auto bg-gray-50 ${state.firebaseUser ? 'md:ml-72 ml-16' : 'm-0' }">
+      <au-viewport
+        default="dashboard"
+        name="root"
+      >
+      </au-viewport>
+    </div>
+  </div>
+</div>

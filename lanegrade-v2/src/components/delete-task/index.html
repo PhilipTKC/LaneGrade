@@ -1,0 +1,56 @@
+<div
+  class="modal p-8"
+  id.bind="modalId"
+  aria-hidden="true"
+>
+  <div
+    tabindex="-1"
+    class="w-full p-4 outline-none"
+    if.bind="isOpen"
+  >
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="flex w-full">
+        <div class="w-full">
+          <div>
+            <header class="flex-1">
+              <h2 class="modal-title text-xl font-bold text-center">
+                Are you sure you want to delete this task?
+              </h2>
+              <h3 class="text-sm text-center">This action cannot be reversed.</h3>
+            </header>
+          </div>
+
+          <div class="flex justify-center my-8">
+            <button
+              if.bind="!isDeleting"
+              aria-label="Close Modal"
+              class="focus:outline-none flex justify-center p-2 mr-1 transition duration-300 ease-in-out bg-gray-100 border-b-2 rounded"
+              data-micromodal-close
+              tabindex="3"
+            >
+              Cancel
+            </button>
+
+            <button if.bind="isDeleting"></button>
+
+            <button
+              aria-label="Confirm Delete Task"
+              class="hover:border-indigo-500 focus:outline-none hover:bg-indigo-100 flex justify-center p-2 ml-1 transition duration-300 ease-in-out bg-red-100 border-b-2 rounded"
+              click.delegate="deleteTask()"
+              tabindex="2"
+            >
+              <span if.bind="!isDeleting">Delete</span>
+              <span if.bind="isDeleting">
+                <i class="fad fa-circle-notch fa-spin"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
